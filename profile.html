@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<style>
+
+  #topContainer{
+    padding-top: 50px;
+  }
+
+  #navBarList li a:hover{
+    background-color: transparent;
+    color: #4285F4;
+  }
+  #navBarList li a:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid green;
+    transition: 0.4s;
+  }
+
+  #navBarList li a:hover:after{
+    width: 100%;
+  }
+
+    .centerText{
+        text-align: center;
+    }
+
+    .solvedProblem{
+        background-color: #5cb85c;
+    }
+    .ongoingProblem{
+        background-color: #F4AD4E;
+    }
+
+    #innerTasksDiv{
+        padding: 30px;
+        background: #eff0f1;
+        border: 0;
+        border-radius: 5px;
+    }
+
+
+</style>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavBar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="myNavBar">
+        <ul class="nav navbar-nav" id ="navBarList">
+          <li><a href="login.html">Home <span class="sr-only">(current)</span></a></li>
+          <li class ="active"><a href="profile.html">My Profile <span class="sr-only">(current)</span></a></li>
+
+
+          <li><a href="task.html">Messages</a></li>
+
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><b>My Points:</b> 650</a></li>
+          <li class="dropdown">
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <div class="container" id = "topContainer">
+    <div class="row">
+
+      <section class="content">
+        <h1 class = "centerText">My Profile</h1>
+        <div class="col-md-12 col-md-offset-0">
+          <div class="panel panel-default">
+            <h3 class = "centerText">Points: 650</h3>
+            <h3 class = "centerText">Ongoing tasks: 4</h3>
+
+
+          </div>
+        </div>
+
+
+        <h1 class = "centerText">My Tasks</h1>
+        <div class="col-md-12 col-md-offset-0" id = "tasksDiv">
+          <div class="panel panel-default" id = "innerTasksDiv">
+            <div class="panel-body">
+              <div class="pull-right">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing Problems</button>
+                  <button type="button" class="btn btn-success btn-filter" data-target="pendiente">Solved Problems</button>
+                  <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button>
+                </div>
+              </div>
+              <div class="table-container">
+                <table class="table table-filter">
+                  <tbody>
+                    <tr data-status="pagado" class = "solvedProblem">
+                      <td>
+                        <div class="ckbox">
+                          <input type="checkbox" id="checkbox1">
+                          <label for="checkbox1"></label>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="javascript:;" class="star">
+                          <i class="glyphicon glyphicon-star"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <div class="media">
+                          <a href="#" class="pull-left">
+                          </a>
+                          <div class="media-body">
+                            <span class="media-meta pull-right">Febrero 13, 2016</span>
+                            <h4 class="title">
+														Lorem Impsum
+														<span class="pull-right pagado">Linear Algebra</span>
+													</h4>
+                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="pendiente" class = "ongoingProblem">
+                      <td>
+                        <div class="ckbox">
+                          <input type="checkbox" id="checkbox3">
+                          <label for="checkbox3"></label>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="javascript:;" class="star">
+                          <i class="glyphicon glyphicon-star"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <div class="media">
+                          <a href="#" class="pull-left">
+                          </a>
+                          <div class="media-body">
+                            <span class="media-meta pull-right">Febrero 13, 2016</span>
+                            <h4 class="title">
+														Lorem Impsum
+														<span class="pull-right pendiente">Calculus I</span>
+													</h4>
+                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="cancelado" class = "ongoingProblem">
+                      <td>
+                        <div class="ckbox">
+                          <input type="checkbox" id="checkbox2">
+                          <label for="checkbox2"></label>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="javascript:;" class="star">
+                          <i class="glyphicon glyphicon-star"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <div class="media">
+                          <a href="#" class="pull-left">
+                          </a>
+                          <div class="media-body">
+                            <span class="media-meta pull-right">Febrero 13, 2016</span>
+                            <h4 class="title">
+														Lorem Impsum
+														<span class="pull-right cancelado">Group Theory</span>
+													</h4>
+                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="pagado" class="selected ongoingProblem">
+                      <td>
+                        <div class="ckbox">
+                          <input type="checkbox" id="checkbox4" checked>
+                          <label for="checkbox4"></label>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="javascript:;" class="star star-checked">
+                          <i class="glyphicon glyphicon-star"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <div class="media">
+                          <a href="#" class="pull-left">
+                          </a>
+                          <div class="media-body">
+                            <span class="media-meta pull-right">Febrero 13, 2016</span>
+                            <h4 class="title">
+														Lorem Impsum
+														<span class="pull-right pagado">Linear Algebra</span>
+													</h4>
+                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="pendiente" class = "ongoingProblem">
+                      <td>
+                        <div class="ckbox">
+                          <input type="checkbox" id="checkbox5">
+                          <label for="checkbox5"></label>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="javascript:;" class="star">
+                          <i class="glyphicon glyphicon-star"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <div class="media">
+                          <a href="#" class="pull-left">
+                          </a>
+                          <div class="media-body">
+                            <span class="media-meta pull-right">Febrero 13, 2016</span>
+                            <h4 class="title">
+														Lorem Impsum
+														<span class="pull-right pendiente">Calculus I</span>
+													</h4>
+                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="content-footer">
+            <p>
+
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type = "text/javascript" src = "bootstrap/js/bootstrap.min.js"> </script>
+</body>
+
+</html>
