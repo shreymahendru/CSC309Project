@@ -118,15 +118,21 @@ body {
   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
 }
 
+.centerText{
+  text-align: center;
+}
+
 
 .wrapper {
     /*margin-top: 80px;*/
     /*margin-bottom: 80px;*/
     height: 100vh;
     -webkit-background-origin: border;
-    background-image: url(images/marking.jpg);
+    /*background-image: url(images/marking.jpg);*/
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/marking.jpg');
     background-size: cover;
     padding: 80px;
+
 }
 
 .form-signin {
@@ -166,6 +172,14 @@ body {
     border-top-right-radius: 0;
 }
 
+#toprow{
+  margin-top:100px;
+  text-align: center;
+  color:white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+
 
 
 
@@ -201,7 +215,10 @@ body {
           </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><b>My Points:</b> 650</a></li>
+          <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
+            <li data-toggle="modal" data-target="#loginForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>
+            <li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
           <li class="dropdown">
             <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
@@ -220,7 +237,7 @@ body {
 
   <div class="wrapper" id = "topContainer">
 
-        <form class="form-signin" id = "loginForm">
+    <form class="form-signin modal fade" id = "loginForm">
           <h2 class="form-signin-heading">Please login</h2>
           <input type="text" class="form-control" id = "emailForm" name="username" placeholder="Email Address" required="" autofocus="" />
           <input type="password" class="form-control" id = "passwordForm" name="password" placeholder="Password" required="" />
@@ -236,10 +253,30 @@ body {
             <button class="loginBtn loginBtn--google">
               Login with Google
             </button>
-          </div>
 
+          </div>
+          <div class = "centerText">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </form>
 
+
+    <div class="container contentContainer" id ="blurbContainer">
+
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3" id = "toprow">
+
+          <h1 class= "marginTop">Online Grader</h1>
+
+          <p class="lead"> Your own personal teacher to grade your papers </p>
+
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
