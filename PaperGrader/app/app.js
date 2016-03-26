@@ -13,5 +13,10 @@
                     templateUrl: "app/signup/signup.html",
                     controller: "SignupController"
                 })
+                .state('login', {
+                    url: "/login",
+                    templateUrl : "app/signup/login.html",
+                    controller: "LoginController"
+                })
         })
 }());
