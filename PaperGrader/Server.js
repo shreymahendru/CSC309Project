@@ -17,7 +17,7 @@ var AuthenticationController = require('./server/Controllers/AuthenticationContr
 var app = express();
 
 app.get('/', function(req, res){
-  res.sendfile('index.html');
+  res.sendfile('app/index.html');
 });
 
 app.get('/api/users', function(req, res){
@@ -120,7 +120,7 @@ app.use('/node_modules', express.static(__dirname + "/node_modules"));
 app.use('/images', express.static(__dirname + "/images"));
 app.use(bodyParser.json());
 
-//Aithentication
+//Authentication
 app.post('/api/user/signup', AuthenticationController.signup);
 app.post('/api/user/login', AuthenticationController.login);
 

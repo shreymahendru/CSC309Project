@@ -9,12 +9,10 @@
                 $http.post('api/user/login', $scope.loginUser).success(function (res) {
                     console.log("WTF?");
                     localStorage.setItem('User-data', JSON.stringify(res));
+                    $state.go('home')
                 }).error(function(error){
                     console.log(error);
                 })
-
             };
-
         }]);
-
 }());

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission</title>
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            //theme: 'tundora',
+            plugins : 'advlist autolink link image lists charmap print preview wordcount spellchecker fullscreen',
+//            toolbar: 'undo redo | styleselect | bold italic | link image'
+            menubar: 'file edit view',
+            skin: 'lightgray'
+
+        });
+        tinymce.init({
+            selector: '#myeditablediv',  // note the comma at the end of the line!
+              // last reminder, note the comma!
+            menubar: false,
+            code_dialog_height: 300,
+            code_dialog_width: 350,
+            skin: 'lightgray'
+        });
+    </script>
+</head>
+<body>
+    <h1>TinyMCE Quick Start Guide</h1>
+    <form method="post">
+        <textarea id="mytextarea">Hello, World!</textarea>
+
+    </form>
+
+    <h1>TinyMCE Inline Editing Mode Guide</h1>
+    <form method="post">
+        <div id="myeditablediv">Click here to edit!</div>
+    </form>
+</body>
+</html>

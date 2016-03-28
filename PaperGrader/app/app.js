@@ -10,13 +10,18 @@
             $stateProvider
                 .state('signUp', {
                     url: "/signup",
-                    templateUrl: "app/signup/signup.html",
-                    controller: "SignupController"
+                    templateUrl: "app/views/signup.html",
+                    controller: "controllers/SignupController"
                 })
                 .state('login', {
                     url: "/login",
-                    templateUrl : "app/signup/login.html",
+                    templateUrl : "app/views/login.html",
                     controller: "LoginController"
+                })
+                .state('home', {
+                    url: "/home",
+                    templateUrl : "app/views/feed.html",
+                    controller: "FeedController"
                 })
         })
 }());
