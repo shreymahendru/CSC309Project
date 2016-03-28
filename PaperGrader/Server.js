@@ -20,8 +20,6 @@ app.get('/', function(req, res){
 });
 
 app.get('/api/users', function(req, res){
-  console.log(req.params);
-  console.log(req.query);
 
   User.find(function(err, users){
     if(err){ return err; }
@@ -44,8 +42,7 @@ app.get('/api/comments', function(req, res, next){
 });
 
 //get user by name
-app.get('api/users/:id', function(req, res, next) {
-  console.log("one");
+app.get('/api/users/:id', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err)
     res.send(err);
