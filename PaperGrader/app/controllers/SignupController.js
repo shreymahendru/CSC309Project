@@ -4,12 +4,12 @@
 (function(){
 
     angular.module("PaperGrader")
-        .controller('SignupController', ['$scope', '$state', '$http', function($scope, $state, $http){
-            $scope.createUser = function(){
+        .controller('SignupController', ['$rootScope','$scope', '$state', '$http', function($rootScope, $scope, $state, $http){
+            $rootScope.title = $state.current.title;
+
+            $rootScope.createUser = function(){
                 console.log($scope.newUser);
-
                 $http.post('api/user/signup', $scope.newUser).success(function(response){
-
                 }).error(function(error){
                     console.log(error);
                 })

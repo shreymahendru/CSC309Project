@@ -4,15 +4,18 @@
 (function(){
 
     angular.module("PaperGrader")
-        .controller('LoginController', ['$scope', '$state','$http', function($scope, $state, $http){
-            $scope.LogUserIn = function(){
+        .controller('LoginController', ['$rootScope','$scope', '$state','$http', function($rootScope, $scope, $state, $http){
+            $rootScope.LogUserIn = function(){
+              console.log("WTF");
                 $http.post('api/user/login', $scope.loginUser).success(function (res) {
-                    console.log("WTF?");
                     localStorage.setItem('User-data', JSON.stringify(res));
-                    $state.go('home')
+                    $state.go('home');
                 }).error(function(error){
                     console.log(error);
                 })
             };
+
+            $rootScope.title = $state.current.title;
+            $rootScope.user = $state.current.user;
         }]);
 }());

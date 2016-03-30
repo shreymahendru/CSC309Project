@@ -1,90 +1,74 @@
 <!DOCTYPE html>
 <html ng-app="PaperGrader">
 <head>
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="app/css/style.css">
+  <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app/css/style.css">
+  <title ng-bind="title">Online Grader</title>
 </head>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" id = "navBarWrapper">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">OnlineGrader</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav" id = "navBarList">
-                <li class="active"><a href="login.html">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="profile.html">My Profile <span class="sr-only">(current)</span></a></li>
-
-
-                <li><a href="task.html">Messages</a></li>
-
-            </ul>
-            <form class="navbar-form navbar-right" role="search" id = "searchBarDiv">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" id = "searchBar">
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
-                <!--<li data-toggle="modal" data-target="#loginForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>-->
-                <!--<li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-
-                <li>
-                    <a ui-sref="login">Login</a>
-                </li>
-                <li>
-                    <a ui-sref="signUp"> SignUp</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">OnlineGrader</a>
     </div>
-    <!-- /.container-fluid -->
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" id = "navBarList">
+        <li class="active"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+        <li><a ui-sref="profile">My Profile <span class="sr-only">(current)</span></a></li>
+        <li><a ui-sref="task">Messages</a></li>
+        <li ng-if="user"><a ui-sref="admin">Admin Control Panel</a></li>
+
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id = "searchBarDiv">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" id = "searchBar">
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
+        <!--<li data-toggle="modal" data-target="#loginForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>-->
+        <!--<li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+        <li ng-if="!user"><a ui-sref="login">LogIn</a></li>
+        <li ng-if="!user"><a ui-sref="signUp"> SignUp</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
 </nav>
 
 <body>
-<div class="wrapper" id = "topContainer">
-
+  <div class="wrapper" id = "topContainer">
     <div ui-view></div>
-
     <div class="container contentContainer" id ="blurbContainer">
-
-        <div class="row">
-
-            <div class="col-md-6 col-md-offset-3" id = "toprow">
-
-                <h1 class= "marginTop">Online Grader</h1>
-
-                <p class="lead"> Your own personal teacher to grade your papers. </p>
-
-
-            </div>
-
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3" id = "toprow">
+          <h1 class= "marginTop">Online Grader</h1>
+          <p class="lead"> Your own personal teacher to grade your papers. </p>
         </div>
-
+      </div>
     </div>
-
-
-</div>
+  </div>
 
 
 
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-<script type="text/javascript" src="node_modules/angular/angular.js"></script>
-<script src="app/app.js"></script>
-<script src="app/controllers/SignupController.js"></script>
-<script src="app/controllers/LoginController.js"></script>
-<script src="node_modules/bootstrap/js/modal.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers/SignupController.js"></script>
+  <script src="app/controllers/LoginController.js"></script>
+  <script src="app/controllers/FeedController.js"></script>
+  <script src="node_modules/bootstrap/js/modal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
 </body>
 </html>

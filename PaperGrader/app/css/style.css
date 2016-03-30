@@ -1,3 +1,246 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #353535;
+}
+
+#topContainer{
+  padding-top: 50px;
+}
+
+#navBarList li a:hover{
+  background-color: transparent;
+  color: #4285F4;
+}
+#navBarList li a:after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-bottom: 2px solid green;
+  transition: 0.4s;
+}
+
+#navBarList li a:hover:after{
+  width: 100%;
+}
+
+.content h1 {
+  text-align: center;
+}
+.content .content-footer p {
+  color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
+.content .content-footer p a {
+  color: inherit;
+  font-weight: bold;
+}
+
+/*  --------------------------------------------------
+  :: Table Filter
+  -------------------------------------------------- */
+.panel {
+  border: 1px solid #ddd;
+  background-color: #fcfcfc;
+}
+.panel .btn-group {
+  margin: 15px 0 30px;
+}
+.panel .btn-group .btn {
+  transition: background-color .3s ease;
+}
+.table-filter {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+.table-filter tbody tr:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+.table-filter tbody tr td {
+  padding: 10px;
+  vertical-align: middle;
+  border-top-color: #eee;
+}
+.table-filter tbody tr.selected td {
+  background-color: #eee;
+}
+.table-filter tr td:first-child {
+  width: 38px;
+}
+.table-filter tr td:nth-child(2) {
+  width: 35px;
+}
+.ckbox {
+  position: relative;
+}
+.ckbox input[type="checkbox"] {
+  opacity: 0;
+}
+
+.table-filter .star {
+  color: #ccc;
+  text-align: center;
+  display: block;
+}
+.table-filter .star.star-checked {
+  color: #F0AD4E;
+}
+.table-filter .star:hover {
+  color: #ccc;
+}
+.table-filter .star.star-checked:hover {
+  color: #F0AD4E;
+}
+
+
+.table-filter .media-meta {
+  font-size: 11px;
+  color: #999;
+}
+.table-filter .media .title {
+  color: #2BBCDE;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0;
+}
+.table-filter .media .title span {
+  font-size: .8em;
+  margin-right: 20px;
+}
+.table-filter .media .title span.pagado {
+  color: #5cb85c;
+}
+.table-filter .media .title span.pendiente {
+  color: #f0ad4e;
+}
+.table-filter .media .title span.cancelado {
+  color: #d9534f;
+}
+.table-filter .media .summary {
+  font-size: 14px;
+}
+
+#start{
+  width: 30%;
+  height: 60px;
+
+
+}
+
+  #topContainer{
+    padding-top: 50px;
+  }
+
+  #navBarList li a:hover{
+    background-color: transparent;
+    color: #4285F4;
+  }
+  #navBarList li a:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid green;
+    transition: 0.4s;
+  }
+
+  #navBarList li a:hover:after{
+    width: 100%;
+  }
+
+    .centerText{
+        text-align: center;
+    }
+
+    .solvedProblem{
+        background-color: #5cb85c;
+    }
+    .ongoingProblem{
+        background-color: #F4AD4E;
+    }
+
+    #innerTasksDiv{
+        padding: 30px;
+        background: #eff0f1;
+        border: 0;
+        border-radius: 5px;
+    }
+
+    #reviews{
+        text-align: center;
+    }
+
+    .profilePic{
+
+    }
+
+    .reviewBox{
+        padding-top: 10px;
+        border: 2px solid grey;
+        text-align: left;
+        padding-left: 5px;
+        height: 120px;
+        background: #eff0f1;
+    }
+    .reviewBox img{
+        width: 10%;
+        height: 80%;
+        float: left;
+        /*position: relative;*/
+        /*top: 50%;*/
+        /*transform: translateY(-50%);*/
+        margin-right: 10px;
+    }
+
+
+
+
+
+#topContainer{
+  padding-top: 50px;
+}
+
+#navBarList li a:hover{
+  background-color: transparent;
+  color: #4285F4;
+}
+#navBarList li a:after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-bottom: 2px solid green;
+  transition: 0.4s;
+}
+
+#navBarList li a:hover:after{
+  width: 100%;
+}
+
+.centerText{
+  text-align: center;
+}
+
+
+
+#innerTasksDiv{
+  padding: 30px;
+  background: #eff0f1;
+  border: 0;
+  border-radius: 5px;
+}
+
+.spacer {
+    margin-top: 16vh; /* define margin as you see fit */
+}
+
+
 
     body {
         background: #eee !important;
