@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Submission</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script>
         tinymce.init({
@@ -16,7 +19,7 @@
         });
         tinymce.init({
             selector: '#myeditablediv',  // note the comma at the end of the line!
-              // last reminder, note the comma!
+            // last reminder, note the comma!
             menubar: false,
             code_dialog_height: 300,
             code_dialog_width: 350,
@@ -25,15 +28,58 @@
     </script>
 </head>
 <body>
-    <h1>TinyMCE Quick Start Guide</h1>
-    <form method="post">
-        <textarea id="mytextarea">Hello, World!</textarea>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavBar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OnlineGrader</a>
+        </div>
 
-    </form>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="myNavBar">
+            <ul class="nav navbar-nav" id ="navBarList">
+                <li><a href="login.html">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="profile.html">My Profile <span class="sr-only">(current)</span></a></li>
+                <li><a href="task.html">Messages</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><b>My Points:</b> 650</a></li>
+                <li class="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
 
-    <h1>TinyMCE Inline Editing Mode Guide</h1>
-    <form method="post">
-        <div id="myeditablediv">Click here to edit!</div>
-    </form>
+
+<div class="container" id = "topContainer">
+    <section class="content">
+        <h1> Submit Your Paper</h1>
+        <form method="post">
+            <textarea id="mytextarea"></textarea>
+        </form>
+        <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Submit</button>
+    </section>
+</div>
 </body>
 </html>
