@@ -53,7 +53,7 @@
   <div class="wrapper" id = "topContainer">
     <div ui-view></div>
     <div class="container contentContainer" id ="blurbContainer">
-      <div class="row">
+      <div ng-if="!user" class="row">
         <div class="col-md-6 col-md-offset-3" id = "toprow">
           <h1 class= "marginTop">Online Grader</h1>
           <p class="lead"> Your own personal teacher to grade your papers. </p>
