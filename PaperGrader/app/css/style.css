@@ -124,12 +124,10 @@ body {
   font-size: 14px;
 }
 
-#start{
-  width: 30%;
-  height: 60px;
+#start {
+    width: 30%;
+    height: 60px;
     margin-top: 15px;
-
-
 }
 
   #topContainer{
