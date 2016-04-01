@@ -22,10 +22,10 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" id = "navBarList">
-        <li class="active"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
-        <li><a ui-sref="profile">My Profile <span class="sr-only">(current)</span></a></li>
-        <li><a ui-sref="task">Messages</a></li>
+      <ul class="nav navbar-nav" id="navBarList">
+        <li ng-if="user"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+        <li ng-if="user"><a ui-sref="profile">My Profile <span class="sr-only">(current)</span></a></li>
+        <li ng-if="user"><a ui-sref="task">Messages</a></li>
         <li ng-if="user"><a ui-sref="admin">Admin Control Panel</a></li>
 
       </ul>
@@ -34,12 +34,14 @@
           <input type="text" class="form-control" placeholder="Search" id = "searchBar">
         </div>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" id="navBarList">
         <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
         <!--<li data-toggle="modal" data-target="#loginForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>-->
         <!--<li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
         <li ng-if="!user"><a ui-sref="login">LogIn</a></li>
         <li ng-if="!user"><a ui-sref="signUp"> SignUp</a></li>
+        <li ng-if="user"><a href="#"><b>My Points:</b> 650</a></li>
+
       </ul>
     </div>
     <!-- /.navbar-collapse -->
