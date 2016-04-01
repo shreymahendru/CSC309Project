@@ -6,8 +6,9 @@
     angular.module("PaperGrader")
         .controller('LoginController', ['$rootScope','$scope', '$state','$http', function($rootScope, $scope, $state, $http){
             $rootScope.LogUserIn = function(){
-              console.log("WTF");
+                console.log($scope.loginUser);
                 $http.post('api/user/login', $scope.loginUser).success(function (res) {
+                    console.log("logged");
                     localStorage.setItem('User-data', JSON.stringify(res));
                     $state.go('home');
                 }).error(function(error){

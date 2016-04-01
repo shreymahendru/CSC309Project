@@ -8,6 +8,7 @@
             $rootScope.title = $state.current.title;
 
             $rootScope.createUser = function(){
+              console.log("signup");
                 console.log($scope.newUser);
                 $http.post('api/user/signup', $scope.newUser).success(function(response){
                 }).error(function(error){
