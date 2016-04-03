@@ -230,8 +230,8 @@ body {
 
 #innerTasksDiv{
   padding: 30px;
-  background: #eff0f1;
-  border: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
   border-radius: 5px;
 }
 
@@ -427,4 +427,26 @@ body {
     margin-left: auto;
     margin-right: auto;
 
+}
+
+/*MY PROFILE*/
+
+.blueText{
+    color: #69D2E7;
+}
+
+.transparentBackground{
+    background-color:rgba(255,0,0,0.0);
+}
+
+.borderNone{
+    border: none;
+}
+
+.greenColor{
+    color: #1FDA9A;
+}
+
+.orangeColor{
+    color: #EC971F;
 }
