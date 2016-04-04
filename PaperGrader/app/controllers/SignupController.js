@@ -11,6 +11,7 @@
               console.log("signup");
                 console.log($scope.newUser);
                 $http.post('api/user/signup', $scope.newUser).success(function(response){
+                    $state.go('home');
                 }).error(function(error){
                     console.log(error);
                 })

@@ -26,7 +26,7 @@
                     templateUrl : "app/views/login.html",
                     title: "Log In",
                     user: false,
-                    controller: "LoginController",
+                    controller: "LoginController"
 
                 })
                 .state('home', {
