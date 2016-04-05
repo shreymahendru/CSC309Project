@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
+var flash    = require('connect-flash');
 
 require('./server/datasets/Posts');
 require('./server/datasets/Comments');
@@ -20,6 +21,7 @@ var AuthenticationController = require('./server/Controllers/AuthenticationContr
 
 var app = express();
 
+app.set('view engine', 'ejs'); // set up ejs for flash msgs
 
 app.use('/app', express.static(__dirname + "/app"));
 
@@ -43,18 +45,17 @@ app.use(passport.session());   // connect passport for current session
 
 require('./server/Controllers/AuthenticationController')(passport);  // importing passport Authentication
 
-
+app.use(flash());
 
 
 
 
 app.get('/', isLoggedIn, function(req, res){
-  // res.sendFile(__dirname + '/firstPage.html');
   res.sendFile(__dirname + '/app/index.html');
 });
 
 app.get('/login', function(req, res){
-  res.sendFile(__dirname + '/firstPage.html');
+  res.render(__dirname + '/firstPage.ejs', { message: req.flash('loginMessage') });
 });
 
 
@@ -62,16 +63,16 @@ app.get('/login', function(req, res){
 //=========================================================================
 app.post('/signup', passport.authenticate('local-signup', {
   successRedirect : '/', // redirect to the secure profile section
-  failureRedirect : '/' // redirect back to the signup page if there is an error
-  // failureFlash : true // allow flash messages
+  failureRedirect : '/', // redirect back to the signup page if there is an error
+  failureFlash : true // allow flash messages
 }));
         // THE SUCCESS REDIRECT WOULD B TO THE APP EVERY WHERE!!!!
         // REDIRECT TO PROFILE RIGHT NOW IS JUST TEMP!!!!!!
 
 app.post('/login', passport.authenticate('local-login', {
   successRedirect : '/', // redirect to the secure profile section
-  failureRedirect : '/' // redirect back to the signup page if there is an error
-  //failureFlash : true // allow flash messages
+  failureRedirect : '/', // redirect back to the signup page if there is an error
+  failureFlash : true // allow flash messages
 }));
 
 
@@ -87,11 +88,6 @@ app.get('/auth/facebook/callback',
       failureRedirect : '/'
     }));
 
-//
-// app.get('/home', isLoggedIn, function(req, res) {
-//   console.log(req.user);
-//  res.sendFile(__dirname + '/app/index.html');
-// });
 
 
 app.get('/logout', function(req, res) {
