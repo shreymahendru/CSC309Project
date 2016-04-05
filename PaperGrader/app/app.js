@@ -38,11 +38,11 @@
                     controller: "FeedController"
                 })
                 .state('profile', {
-                    url: "/profile/:user_id",
+                    url: "/profile/:id",
                     templateUrl : "app/views/profile.html",
                     title: "My Profile",
                     user: true,
-                    controller: "FeedController"
+                    controller: "ProfileController"
                 })
                 .state('post', {
                     url: "/post/:permalink",
