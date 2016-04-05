@@ -8,12 +8,13 @@
         .config(function($stateProvider){
             //making everything single page like
             $stateProvider
-            .state('default', {
-                url: "/",
-                title: "Online Grader",
-                user: false,
-                templateUrl: "app/views/index.html"
-             })
+            // .state('default', {
+            //     url: "/",
+            //     title: "Online Grader",
+            //     user: true,
+            //     templateUrl: "app/index.html"
+            //     controller: "HomeController"
+            //  })
                 .state('signUp', {
                     url: "/signup",
                     templateUrl: "app/views/signup.html",

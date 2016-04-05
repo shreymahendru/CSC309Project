@@ -48,14 +48,20 @@ require('./server/Controllers/AuthenticationController')(passport);  // importin
 
 
 
-app.get('/', function(req, res){
+app.get('/', isLoggedIn, function(req, res){
+  // res.sendFile(__dirname + '/firstPage.html');
+  res.sendFile(__dirname + '/app/index.html');
+});
+
+app.get('/login', function(req, res){
   res.sendFile(__dirname + '/firstPage.html');
 });
+
 
 // LOCAL LOGIN/SIGNUP
 //=========================================================================
 app.post('/signup', passport.authenticate('local-signup', {
-  successRedirect : '/profile', // redirect to the secure profile section
+  successRedirect : '/', // redirect to the secure profile section
   failureRedirect : '/' // redirect back to the signup page if there is an error
   // failureFlash : true // allow flash messages
 }));
@@ -63,7 +69,7 @@ app.post('/signup', passport.authenticate('local-signup', {
         // REDIRECT TO PROFILE RIGHT NOW IS JUST TEMP!!!!!!
 
 app.post('/login', passport.authenticate('local-login', {
-  successRedirect : '/profile', // redirect to the secure profile section
+  successRedirect : '/', // redirect to the secure profile section
   failureRedirect : '/' // redirect back to the signup page if there is an error
   //failureFlash : true // allow flash messages
 }));
@@ -77,15 +83,15 @@ app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' })
 // handle the callback after facebook has authenticated the user
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-      successRedirect : '/profile',
+      successRedirect : '/',
       failureRedirect : '/'
     }));
 
-
-app.get('/profile', isLoggedIn, function(req, res) {
-  console.log(req.user);
-  res.sendFile(__dirname + '/profile.html');
-});
+//
+// app.get('/home', isLoggedIn, function(req, res) {
+//   console.log(req.user);
+//  res.sendFile(__dirname + '/app/index.html');
+// });
 
 
 app.get('/logout', function(req, res) {
@@ -100,7 +106,7 @@ function isLoggedIn(req, res, next) {
     return next();
 
   // if they aren't redirect them to the home page
-  res.redirect('/');
+  res.redirect('/login');
 }
 
 
@@ -108,14 +114,14 @@ function isLoggedIn(req, res, next) {
  //DONT NEED THIS AS YOU CAN SEE IN THE ABOVE EXAMPLE EVERY REQ IS OF A SESSION AND EACH SESSION IS FOR A USER
 // req.user has the user obj everytime which is autheticated
 
-//
-//
-//app.get('/api/users', function(req, res){
-//  User.find(function(err, users){
-//    if(err){ return err; }
-//      res.json(users);
-//  });
-//});
+
+
+app.get('/api/users', function(req, res){
+ User.find(function(err, users){
+   if(err){ return err; }
+     res.json(users);
+ });
+});
 
 app.get('/api/posts', function(req, res, next){
   Post.find(function(err, posts){

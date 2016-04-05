@@ -7,5 +7,13 @@
         .controller('FeedController', ['$rootScope','$scope', '$state','$http', function($rootScope, $scope, $state, $http){
             $rootScope.title = $state.current.title;
             $rootScope.user = $state.current.user;
+
+            $http.get('/api/posts').success(function (res) {
+                console.log(res);
+                $scope.posts = res;
+            }).error(function(error){
+                console.log(error);
+            })
+
         }]);
 }());
