@@ -224,8 +224,8 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
-                <li data-toggle="modal" data-target="#SignUpForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>
-                <li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li data-toggle="modal" data-target="#SignUpForm"> <span class ="glyphicon glyphicon-user"></span> Sign Up </li>
+                <li data-toggle="modal" data-target="#loginForm"><span class="glyphicon glyphicon-log-in"></span> Login</li>
                 <li class="dropdown">
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
@@ -242,6 +242,10 @@
 </nav>
 
 <div class="wrapper" id = "topContainer">
+
+    <% if (message.length > 0) { %>
+    <div class="alert alert-danger"><%= message %></div>
+    <% } %>
 
     <form class="form-signin modal fade" id = "loginForm" action="/login" method="POST">
         <h2 class="form-signin-heading">Please login</h2>
@@ -307,9 +311,6 @@
     </div>
 
 </div>
-
-
-
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script type = "text/javascript" src = "node_modules/bootstrap/dist/js/bootstrap.min.js"> </script>
