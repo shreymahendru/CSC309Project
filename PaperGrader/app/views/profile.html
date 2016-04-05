@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="app/css/style.css">
 </head>
@@ -16,7 +15,8 @@
         <div class="col-md-12 col-md-offset-0 transparentBackground borderNone" id = "profileInfo">
           <img src = "images/man1.jpg">
           <div class="panel panel-default transparentBackground borderNone">
-            <h3><span class = "greenColor">Points:</span> 650</h3>
+            <h3><span class = "redColor">{{user.name}}</span></h3>
+            <h3><span class = "greenColor">Points:</span> {{user.points}}</h3>
             <h3><span class = "orangeColor">Ongoing tasks:</span> 4</h3>
             <h3>Biography</h3>
           </div>
@@ -207,7 +207,6 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type = "text/javascript" src = "bootstrap/js/bootstrap.min.js"> </script>
 </body>
 
 </html>

@@ -5,13 +5,15 @@
 (function(){
 
     angular.module("PaperGrader")
-        .controller('ProfileController', ['$scope','$http','$stateParams','$state', function($scope,$http,$stateParams,$state){
-          console.log($stateParams.id);
+        .controller('ProfileController', ['$rootScope','$scope','$http','$stateParams','$state', function($rootScope, $scope,$http,$stateParams,$state){
+          // console.log($stateParams.id);
+          $rootScope.title = $state.current.title;
+          $rootScope.user = $state.current.user;
 
-          var query = 'api/users/'.concat($stateParams.id);
-          console.log(query);
+          var query = 'api/users/current';
           $http.get(query).success(function(response){
               console.log(response);
+              $scope.user = response.local;
           }).error(function(error){
               console.log(error);
           })

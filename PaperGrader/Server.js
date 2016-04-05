@@ -113,6 +113,7 @@ function isLoggedIn(req, res, next) {
 
 
 app.get('/api/users', function(req, res){
+  console.log(req.user._id);
  User.find(function(err, users){
    if(err){ return err; }
      res.json(users);
@@ -132,6 +133,18 @@ app.get('/api/comments', function(req, res, next){
     res.json(comments);
   });
 });
+
+
+//get current session user
+app.get('/api/users/current', function(req, res, next) {
+  User.findById(req.user._id, function(err, user) {
+    if (err)
+    res.send(err);
+    res.json(user);
+  });
+});
+
+
 
 //get user by name
 app.get('/api/users/:id', function(req, res, next) {
