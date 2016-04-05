@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>Task</title>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
@@ -13,16 +11,23 @@
     <div class="row">
 
       <section class="content">
-        <h1>Paper on Political Science</h1>
-        <h2>Price: $50</h2>
+        <h1>Paper on {{post.subject}}</h1>
+        <h2>Price: ${{post.price}}</h2>
         <div class="col-md-12 col-md-offset-0">
           <div class="panel panel-default">
             <div class="panel-body">
-              <h3>Aristotle and Locke on Property: Explain the differences in the ways that Aristotle and Locke defend private property. How might modern states, that adopt either an Aristotelian or Lockean approach to property, differ in their basic policies? Which view, if either, do you ultimately find more persuasive?
-              </h3>
-
-
+              <h2 class="greenColor">Description</h2>
+              <h3>{{post.description}}</h3>
             </div>
+          </div>
+          <div class="panel panel-default">
+
+            <div class="panel-body">
+              <h2 class="orangeColor">Text</h2>
+              <h3>{{post.body}}</h3>
+            </div>
+          </div>
+
           </div>
           <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Start working on the task</button>
           <div class="content-footer">
@@ -37,7 +42,6 @@
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type = "text/javascript" src = "bootstrap/js/bootstrap.min.js"> </script>
 </body>
 
 </html>

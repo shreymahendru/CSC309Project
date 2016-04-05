@@ -127,6 +127,15 @@ app.get('/api/posts', function(req, res, next){
   });
 });
 
+app.get('/api/posts/:id', function(req, res, next) {
+  Post.findById(req.params.id, function(err, user) {
+    if (err)
+    res.send(err);
+    res.json(user);
+  });
+});
+
+
 app.get('/api/comments', function(req, res, next){
   Comment.find(function(err, comments){
     if(err){ return next(err); }

@@ -6,6 +6,7 @@ module.exports =  mongoose.model('Post', {
    title: String,
    description: String,
    averageGrade: Number,
+   price: {type: Number, default: 0},
    date: String,
    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
    upvotes: {type: Number, default: 0},

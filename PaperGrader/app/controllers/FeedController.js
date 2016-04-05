@@ -15,5 +15,9 @@
                 console.log(error);
             })
 
+
+            $scope.redirect = function(post_id) {
+              window.location = "/#/post/" + post_id;
+            }
         }]);
 }());

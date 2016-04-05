@@ -45,11 +45,11 @@
                     controller: "ProfileController"
                 })
                 .state('post', {
-                    url: "/post/:permalink",
+                    url: "/post/:post_id",
                     templateUrl : "app/views/task.html",
                     title: "Post",
                     user: true,
-                    controller: "FeedController"
+                    controller: "PostController"
                 })
                 .state('submit', {
                     url: "/submit",
