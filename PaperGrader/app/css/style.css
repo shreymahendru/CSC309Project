@@ -170,31 +170,6 @@ body {
         border-radius: 5px;
     }
 
-    #reviews{
-        text-align: center;
-    }
-
-    .profilePic{
-
-    }
-
-    .reviewBox{
-        padding-top: 10px;
-        border: 2px solid grey;
-        text-align: left;
-        padding-left: 5px;
-        height: 120px;
-        background: #eff0f1;
-    }
-    .reviewBox img{
-        width: 10%;
-        height: 80%;
-        float: left;
-        /*position: relative;*/
-        /*top: 50%;*/
-        /*transform: translateY(-50%);*/
-        margin-right: 10px;
-    }
 
 
 
@@ -363,7 +338,8 @@ body {
         height: 100vh;
         -webkit-background-origin: border;
         /*background-image: url(images/marking.jpg);*/
-        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/images/marking.jpg');
+        /*background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/images/marking.jpg');*/
+        background: #F5F8FA;
         background-size: cover;
         padding: 80px;
 
@@ -414,6 +390,8 @@ body {
     }
 
 /* Signup */
+
+
 .panel-body input{
     height: 3em;
     font-size: 150%;
@@ -449,4 +427,52 @@ body {
 
 .orangeColor{
     color: #EC971F;
+}
+
+#profileBody{
+    background-color: red;
+}
+
+#profileInfo img{
+    width: 20%;
+    height: 100%;
+    float: left;
+    border-radius: 20px;
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+    margin-right: 10px;
+}
+
+#reviews{
+    text-align: center;
+}
+
+.profilePic{
+
+}
+
+.reviewBox{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;;
+    padding-top: 10px;
+    border: 2px solid grey;
+    text-align: left;
+    padding-left: 5px;
+    height: 120px;
+    background-color: #C5D5CB;
+}
+.reviewBox img{
+    width: 10%;
+    height: 80%;
+    float: left;
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+    margin-right: 10px;
+    border-radius: 15px;
+    border: 2px solid white;
+}
+
+.rating{
+    color: #9068BE;
 }

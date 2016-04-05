@@ -34,11 +34,12 @@
           <input type="text" class="form-control" placeholder="Search" id = "searchBar">
         </div>
       </form>
-      <ul class="nav navbar-nav navbar-right" id="navBarList">
+      <ul class="nav navbar-nav navbar-right">
         <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
         <!--<li data-toggle="modal" data-target="#loginForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>-->
         <!--<li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-        <li ng-if="user"><a href="#"><b>My Points:</b> 650</a></li>
+        <li ng-if="user"><a href="#">Points: 650</a></li>
+        <li ng-if="user"><a href = "#"> <span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
 
       </ul>
     </div>

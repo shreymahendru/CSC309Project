@@ -3,6 +3,8 @@
 <head>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
 
 <style>
@@ -75,6 +77,16 @@
         padding: 5px;
         margin-top: 7px;
 
+    }
+    #signUpButton{
+        margin: 20px;
+    }
+    #loginButton{
+        margin-right: 20px;
+    }
+
+    #loginCloseButton{
+        margin-top: 10px;
     }
 
     /* Facebook */
@@ -187,6 +199,9 @@
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 
+    #registerButtons{
+
+    }
 
 
 
@@ -222,10 +237,10 @@
                     <input type="text" class="form-control" placeholder="Search" id = "searchBar">
                 </div>
             </form>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" id = "registerButtons">
                 <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
-                <li data-toggle="modal" data-target="#SignUpForm"> <span class ="glyphicon glyphicon-user"></span> Sign Up </li>
-                <li data-toggle="modal" data-target="#loginForm"><span class="glyphicon glyphicon-log-in"></span> Login</li>
+                <li data-toggle="modal" data-target="#SignUpForm"><a><span class ="glyphicon glyphicon-user"></span> Sign Up</a> </li>
+                <li data-toggle="modal" data-target="#loginForm"><a><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
                 <li class="dropdown">
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
@@ -247,27 +262,27 @@
     <div class="alert alert-danger"><%= message %></div>
     <% } %>
 
-    <form class="form-signin modal fade" id = "loginForm" action="/login" method="POST">
+    <form class="form-signin modal fade centerText" id = "loginForm" action="/login" method="POST">
         <h2 class="form-signin-heading">Please login</h2>
         <input type="email" class="form-control" id = "emailForm" name="username" placeholder="Email Address" required="" autofocus="" />
         <input type="password" class="form-control" id = "passwordForm" name="password" placeholder="Password" required="" />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button class="btn btn-lg btn-primary btn-success" id = "loginButton" type="submit">Log in</button>
         <!--<div id = "socialLogIn">-->
         <!--<button class="loginBtn loginBtn&#45;&#45;facebook">-->
         <!--Login with Facebook-->
         <!--</button>-->
 
         <!--</div>-->
-        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+        <a href="/auth/facebook" class="btn btn-primary btn-lg"><i class="fa fa-facebook-square"></i> Sign in with Facebook</a>
         <div class = "centerText">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id = "loginCloseButton" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </form>
 
 
 
-    <form class="form-signin modal fade" id = "SignUpForm" action="/signup" method="POST">
-        <h2 class="form-signin-heading">Please SignUp</h2>
+    <form class="form-signin modal fade centerText" id = "SignUpForm" action="/signup" method="POST">
+        <h2 class="form-signin-heading">Please Sign Up</h2>
         <label for="name">Name</label>
         <input type="text" class="form-control" id = "name" name="name" placeholder="John Doe" required="" autofocus="" />
         <br>
@@ -277,12 +292,12 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id = "password" name="password" placeholder="Password" required="" autofocus=""/>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">SignUp</button>
+        <button class="btn btn-lg btn-primary btn-success" id = "signUpButton" type="submit">Sign Up</button>
         <!--<div id = "socialSignUp">-->
         <!--<button class="loginBtn loginBtn&#45;&#45;facebook">-->
         <!--Login with Facebook-->
         <!--</button>-->
-        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+        <a href="/auth/facebook" class="btn btn-primary btn-lg"><i class="fa fa-facebook-square"></i> Sign in with Facebook</a>
 
         <!--</div>-->
 
