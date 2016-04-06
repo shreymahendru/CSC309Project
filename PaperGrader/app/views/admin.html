@@ -28,7 +28,7 @@
                   <div class="table-container">
                     <table class="table table-filter">
                       <tbody>
-                        <tr ng-repeat="user in users" data-status="pagado" class = "solvedProblem">
+                        <tr ng-repeat="user in users" data-status="pagado" class = "solvedProblem" ng-click="edit_user(user._id)">
                           <td>
                             <div class="ckbox">
                               <input type="checkbox" id="checkbox1">

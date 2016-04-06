@@ -129,10 +129,10 @@ app.get('/api/posts', function(req, res, next){
 });
 
 app.get('/api/posts/:id', function(req, res, next) {
-  Post.findById(req.params.id, function(err, user) {
+  Post.findById(req.params.id, function(err, post) {
     if (err)
     res.send(err);
-    res.json(user);
+    res.json(post);
   });
 });
 
@@ -150,6 +150,7 @@ app.get('/api/users/current', function(req, res, next) {
     res.json(req.user);
 });
 
+app.get('');
 
 
 //get user by name

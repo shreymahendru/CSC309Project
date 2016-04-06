@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/app/css/style.css">
 
 
 </head>
@@ -10,12 +10,17 @@
 <body>
 <div class="container centerText" id = "topContainer">
     <h1>Edit Profile</h1>
+
+        <h2>Name =  </h2> <h3>{{user.name}}</h3>
+        <h2>Email =  </h2> <h3>{{user.email}}</h3>
+        <h2>Points =  </h2> <h3>{{user.points}}</h3>
+        <h2>Bio =  </h2><h3>{{user.bio || "N/A"}}</h3>
         <form method = "post" class = "form-horizontal">
 
             <div class ="form-group">
                 <label for="firstNameField" class = "col-sm-2 control-label">First Name</label>
                 <div class = "col-xs-4">
-                    <input type = "text" id = "firstNameField" name = "firstName">
+                    <input type = "text" ng-model="new.name" id = "firstNameField" name = "firstName">
                 </div>
             </div>
 
@@ -29,7 +34,7 @@
             <div class ="form-group">
                 <label for="emailField" class = "col-sm-2 control-label">email</label>
                 <div class = "col-xs-4">
-                    <input type = "text" id = "emailField" name = "email">
+                    <input type = "text" ng-model="new.email" id = "emailField" name = "email">
                 </div>
             </div>
 
@@ -37,7 +42,7 @@
             <div class ="form-group">
                 <label for="passwordField" class = "col-sm-2 control-label">change password</label>
                 <div class = "col-xs-4">
-                    <input type = "text" id = "passwordField" name = "password">
+                    <input type = "text" ng-model="new.password" id = "passwordField" name = "password">
                 </div>
             </div>
 
@@ -45,7 +50,7 @@
                 <label for="biographyField" class = "col-sm-2 control-label">Biography</label>
                 <div class = "col-xs-4">
 
-                    <textarea rows="10" cols="50" name="comment" id = "biographyField">
+                    <textarea rows="10" cols="50" ng-model="new.bio" name="comment" id = "biographyField">
                     </textarea>
                 </div>
             </div>
@@ -54,7 +59,7 @@
 
         </form>
 
-    <button id="saveChanges"  type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Save Changes</button>
+    <button id="saveChanges" ng-click="submitChanges(user)"  type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Save Changes</button>
 
 
 

@@ -81,8 +81,8 @@
                 date: today,
                 solved: false,
                 post: $stateParams.post_id,
-                date: today,
-              }
+                date: today
+              };
 
             console.log(data);
 
