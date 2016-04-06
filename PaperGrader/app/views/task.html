@@ -13,7 +13,7 @@
       <section class="content">
         <h1>Paper on {{post.subject}}</h1>
         <h2>{{post.title}}</h2>
-        <div class="col-md-12 col-md-offset-0">
+        <div class="col-md-8 col-md-offset-0">
           <div class="panel panel-default">
             <div class="panel-body">
               <h2 class="greenColor">Description</h2>
@@ -28,18 +28,28 @@
             </div>
           </div>
 
-          </div>
-          <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Start working on the task</button>
-          <div class="content-footer">
-            <p>
-
-            </p>
-          </div>
         </div>
-      </section>
+        <div class="col-md-4 col-md-offset-0">
+          <div class="panel panel-default">
+            <h3 class="orangeColor">Similar posts</h3>
+            <div class="link" ng-repeat="post in recomendationPosts" data-status="pagado">
+              <p ng-click="redirect(post._id)">{{post.title}}</p>
+            </div>
 
-    </div>
+          </div>
+
+        </div>
+
+        <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Start working on the task</button>
+        <div class="content-footer">
+          <p>
+          </p>
+        </div>
+      </div>
+    </section>
+
   </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
