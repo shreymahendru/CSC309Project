@@ -228,49 +228,64 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
   });
 });
 
+//getting all users for Admin
+app.get('/api/admin/users', function(req, res, next){
+    response = [];
+    User.find(function(err, users){
+        if(err){next(err)}
+        console.log(users);
+        res.json(users);
+    });
+
+});
 
 
 
-//Authentication
-//app.post('/api/user/signup', AuthenticationController.signup);
-//app.post('/api/user/login', AuthenticationController.login);
+
+
+
 
 ////Create user
-app.post('/api/users', function(req, res, next) {
- var user = new User(req.body);
- console.log(req.body);
- user.save(function(err, user){
-   if(err){ return next(err); }
-   console.log(user);
-   res.json(user);
- });
-});
+    app.post('/api/users', function (req, res, next) {
+        var user = new User(req.body);
+        console.log(req.body);
+        user.save(function (err, user) {
+            if (err) {
+                return next(err);
+            }
+            console.log(user);
+            res.json(user);
+        });
+    });
 
 //Add a post
-app.post('/api/posts', function(req, res, next) {
-  var post = new Post(req.body);
-  post.author = req.user._id;
-  post.save(function(err, post){
-    if(err){ return next(err); }
-    res.json(post);
-  });
-});
+app.post('/api/posts', function (req, res, next) {
+    var post = new Post(req.body);
+    post.author = req.user._id;
+    post.save(function (err, post) {
+        if (err) {
+            return next(err);
+        }
+        res.json(post);
+        });
+    });
 
 //Add a comment
-app.post('/api/comments', function(req, res, next) {
-  var comment = new Comment(req.body);
-  comment.author = req.user._id;
-  console.log(req.body);
-  comment.save(function(err, comment){
-    if(err){ return next(err); }
-    res.json(comment);
-  });
-});
+    app.post('/api/comments', function (req, res, next) {
+        var comment = new Comment(req.body);
+        comment.author = req.user._id;
+        console.log(req.body);
+        comment.save(function (err, comment) {
+            if (err) {
+                return next(err);
+            }
+            res.json(comment);
+        });
+    });
 
 //connect to the mongodb
-mongoose.connect('mongodb://localhost:27017/PaperGrader');
+    mongoose.connect('mongodb://localhost:27017/PaperGrader');
 
-
-app.listen('3000', function(){
-  console.log("Running");
-});
+    app.listen('3000', function () {
+        console.log("Running");
+    });

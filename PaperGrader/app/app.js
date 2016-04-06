@@ -63,7 +63,7 @@
                     templateUrl : "app/views/admin.html",
                     title: "Admin",
                     user: true,
-                    controller: "FeedController"
+                    controller: 'AdminController'
                 })
         })
           .run(function ($rootScope, $state, $stateParams) {
