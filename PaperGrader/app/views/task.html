@@ -32,18 +32,57 @@
         <div class="col-md-4 col-md-offset-0">
           <div class="panel panel-default">
             <h3 class="orangeColor">Similar posts</h3>
-            <div class="link" ng-repeat="post in recomendationPosts" data-status="pagado">
-              <p ng-click="redirect(post._id)">{{post.title}}</p>
+            <div class="link" ng-repeat="recomendation in recomendationPosts" data-status="pagado">
+              <p ng-click="redirect(post._id)">{{recomendation.title}}</p>
             </div>
 
           </div>
 
         </div>
 
-        <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Start working on the task</button>
         <div class="content-footer">
           <p>
           </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+
+          <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Add a review</button>
+          <div class="row" id='reviewForm'>
+            <form method = "post" class = "form-horizontal">
+                <div class = "form-group">
+                  <label for = "descriptionField" class="col-sm-2 control-label">Your grade</label>
+                  <div class = "col-xs-1">
+                    <select class = "form-control" id="topics" name="topic" ng-model="review.grade">
+                        <option value = "A ">A</option>
+                        <option value = "B">B</option>
+                        <option value = "C">C</option>
+                        <option value = "D">D</option>
+                    </select>
+                  </div>
+
+                    <label for = "descriptionField" class="col-sm-2 control-label">Your review</label>
+                    <section class="content centerText">
+                        <textarea style="width:400px;" ng-model="review.body" id="mytextarea"></textarea>
+                    </section>
+                </div>
+                <button id="submitReview" ng-click="submitReview()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Submit</button>
+            </form>
+          </div>
+          <h3 id="thanks" class="greenColor">Thank you for the review!</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+          <div class="panel panel-default">
+            <h3 class="orangeColor">Reviews</h3>
+            <div class="link" ng-repeat="review in reviews" data-status="pagado">
+              <p>{{review.body}}</p>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>
@@ -52,6 +91,19 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+document.getElementById('start').addEventListener('click', function () {
+    document.getElementById('reviewForm').style.display = "inline";
+    document.getElementById('start').style.display = "none";
+  });
+
+  document.getElementById('submitReview').addEventListener('click', function () {
+      document.getElementById('reviewForm').style.display = "none";
+      document.getElementById('thanks').style.display = "inline";
+    });
+
+
+</script>
 </body>
 
 </html>

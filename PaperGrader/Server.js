@@ -258,11 +258,12 @@ app.post('/api/posts', function(req, res, next) {
 
 //Add a comment
 app.post('/api/comments', function(req, res, next) {
-  var user = new Comment(req.body);
+  var comment = new Comment(req.body);
+  comment.author = req.user._id;
   console.log(req.body);
-  user.save(function(err, user){
+  comment.save(function(err, comment){
     if(err){ return next(err); }
-    res.json(user);
+    res.json(comment);
   });
 });
 

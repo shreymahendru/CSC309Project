@@ -25,6 +25,18 @@
               })
 
 
+              var query = 'api/comments/posts/' + $stateParams.post_id;
+              $http.get(query).success(function(res){
+                console.log('XXXX');
+
+                console.log(res);
+
+                  $scope.reviews = res;
+              }).error(function(error){
+                  console.log(error);
+              })
+
+
           }).error(function(error){
               console.log(error);
           })
@@ -32,6 +44,52 @@
           $scope.redirect = function(post_id) {
             window.location = "/#/post/" + post_id;
           }
-          
+
+
+          $scope.submitReview = function() {
+            console.log($scope.review);
+
+            var grade = 0;
+            if($scope.review.grade == 'A'){grade=100}
+            else if($scope.review.grade == 'B'){grade=80}
+            else if($scope.review.grade == 'C'){grade=70}
+            else if($scope.review.grade == 'D'){grade=60}
+            else if($scope.review.grade == 'E'){grade=50}
+            else if($scope.review.grade == 'F'){grade=40}
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth(); //January is 0!
+            var yy = today.getFullYear();
+            if(dd<10) {
+              dd='0'+dd
+            }
+            if(mm<10) {
+              mm='0'+mm
+            }
+            today = mm+'.'+dd+'.'+yy;
+
+            var data = {
+                body: $scope.review.body,
+                grade: grade,
+                date: today,
+                solved: false,
+                post: $stateParams.post_id,
+                date: today,
+              }
+
+            console.log(data);
+
+            $http.post('/api/comments', data).success(function(response){
+              console.log(response);
+              // $scope.review = response;
+              $state.reload();
+            }).error(function(error){
+              console.log(error);
+            })
+          }
+
+
+
           }])
 }());
