@@ -92,6 +92,7 @@ app.get('/auth/facebook/callback',
 
 app.get('/logout', function(req, res) {
   req.logout();
+    console.log('loging out');
   res.redirect('/');
 });
 

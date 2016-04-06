@@ -4,18 +4,28 @@
 (function(){
 
     angular.module("PaperGrader")
-        .controller('NavBarController', ['$scope', '$state', '$http', function($scope, $state, $http){
+        .controller('NavBarController', ['$scope', '$state', '$http', function($scope, $state, $http) {
 
-         var query = 'api/users/current';
-         $http.get(query).success(function(response){
-             console.log(response);
-             $scope.user = response.local;
-              console.log($scope.user.admin);
-              if($scope.user.admin) {
-                $scope.admin = true;
-              }
-         }).error(function(error){
-             console.log(error);
-         })
-        }]);
+            var query = 'api/users/current';
+            $http.get(query).success(function (response) {
+                console.log(response);
+                $scope.user = response.local;
+                console.log($scope.user.admin);
+                if ($scope.user.admin) {
+                    $scope.admin = true;
+                }
+            }).error(function (error) {
+                console.log(error);
+            });
+
+            $scope.logout = function () {
+                $http.get("/logout").success(function (res) {
+                    console.log("logged out");
+                    window.location = '/';
+                }).error(function (error) {
+                    console.log(error);
+                });
+            }
+        }
+        ]);
 }());
