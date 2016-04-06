@@ -7,11 +7,23 @@
         .controller('AdminController', ['$rootScope', '$scope', '$state','$http', function($rootScope, $scope, $state, $http){
             $rootScope.title = $state.current.title;
 
-            $http.get('/api/admin/users').success(function(res){
-               $scope.users = res;
-            }).error(function(error){
-                console.log(error);
-            });
+            //console.log($state.current.user);
+
+            $http.get('/api/users/current').success(function(res){
+                if (res.local.admin === false){
+                    $state.go('home');
+                }
+                else{
+                    $http.get('/api/admin/users').success(function(res){
+                        $scope.users = res;
+                    }).error(function(error){
+                        console.log(error);
+                    });
+
+                }
+            }
+            );
+
 
         }])
 

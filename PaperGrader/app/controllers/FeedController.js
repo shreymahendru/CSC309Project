@@ -13,7 +13,7 @@
                 $scope.posts = res;
             }).error(function(error){
                 console.log(error);
-            })
+            });
 
 
             $scope.redirect = function(post_id) {

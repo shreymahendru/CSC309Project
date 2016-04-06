@@ -19,7 +19,7 @@ var userSchema = mongoose.Schema({
         name         : String,
         points       : {type: Number, default: 0},
         admin        : Boolean,
-        bio          : String,
+        bio          : String
     },
     facebook         : {
         id           : String,

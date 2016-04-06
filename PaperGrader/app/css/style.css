@@ -20,6 +20,7 @@ body {
   border-bottom: 2px solid green;
   transition: 0.4s;
 }
+
 #navBarList li a:hover:after{
   width: 100%;
 }
@@ -451,6 +452,10 @@ body {
 
 }
 
+#biography{
+    font-style: italic;
+}
+
 .reviewBox{
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;;
     padding-top: 10px;
@@ -484,3 +489,75 @@ body {
 #thanks {
   display: none;
 }
+
+
+/*ADMIN CP*/
+
+
+/*TASKS*/
+
+#taskContainer{
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    border: 2px solid grey;
+    background-color:#69D2E7;
+}
+#votesDiv{
+    float: left;
+    border-right: 1px solid darkgrey;
+    height: 100%;
+    width: 20%;
+    margin: 0;
+}
+
+#votesUL{
+    margin: 0 auto;
+    padding-right: 3px;
+    padding-left: 5px;
+    list-style: none;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+
+.float-clear{
+    clear:both;
+}
+
+.green{
+    color: limegreen;
+}
+.red{
+    color: darkred;
+}
+
+#taskDescription{
+    overflow: scroll;
+    float:right;
+    width: 80%;
+    padding: 10px;
+    text-align: left;
+}
+.borderTop{
+    border-top: 1px solid grey;
+}
+
+#innerDiv{
+    height: 200px;
+    background-color:#C5D5CB;
+
+}
+
+#voteButtons{
+    display: inline-block;
+    margin-top: 30%;
+}
+
+
+#startTaskButton{
+
+}
+

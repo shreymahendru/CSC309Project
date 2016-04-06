@@ -1,6 +1,30 @@
 /**
  * Created by shreymahendru on 2016-03-26.
  */
+//var Users  = require('../datasets/Users');
+//
+//module.exports.signup = function(req, res){
+//    console.log(req.body);
+//    var user = new Users(req.bodyf);
+//    user.save();
+//    res.json(req.body);
+//};
+//
+//module.exports.login = function(req, res){
+//  Users.find(req.body, function(err, results){
+//      if (err) {
+//          console.log("Error User not Found");
+//      }
+//      if (results && results.length == 1)
+//      {
+//          console.log(results[0]);
+//          var  name = String(results[0].name);
+//          console.log(name);
+//          res.json(req.body.email);
+//
+//      }
+//  });
+//};
 
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
@@ -62,19 +86,18 @@ module.exports = function(passport) {
 
                     // check to see if theres already a user with that email
                     if (user) {
-                        return done(null, false, req.flash('loginMessage', 'That email is already taken.'));
-                        //return done(null, false);
+                        //return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                        return done(null, false);
                     } else {
 
                         // if there is no user with that email
                         // create the user
-                        var newUser   = new User();
+                        var newUser            = new User();
 
                         // set the user's local credentials
                         newUser.local.email    = username;
                         newUser.local.password = newUser.generateHash(password);
                         newUser.local.name = req.body.name;
-                        newUser.local.points = 0;
 
                         // save the user
                         newUser.save(function(err) {
@@ -112,12 +135,12 @@ module.exports = function(passport) {
 
                 // if no user is found, return the message
                 if (!user)
-                    return done(null, false, req.flash('loginMessage', 'No user found. Please Sign Up')); // req.flash is the way to set flashdata using connect-flash
-                    //return done(null, false);
+                //return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+                    return done(null, false);
                 // if the user is found but the password is wrong
                 if (!user.validPassword(password))
-                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-                    //return done(null, false);
+                //return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+                    return done(null, false);
                 // all is well, return successful user
                 return done(null, user);
             });
@@ -184,4 +207,3 @@ module.exports = function(passport) {
         }));
 
 };
-
