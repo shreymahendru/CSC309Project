@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="app/css/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/style.css">
 </head>
 
 <body id = "profileBody">
-  <div class="container" id = "topContainer">
+<div class="container" id = "topContainer">
     <div class="row">
 
       <section class="content">
@@ -25,65 +25,67 @@
         </div>
 
 
-        <h1 ng-if="myProfile" class = "centerText blueText">My Tasks</h1>
-        <h1 ng-if="!myProfile" class = "centerText blueText">{{user.local.name}}'s Tasks</h1>
-        <div class="col-md-12 col-md-offset-0" id = "tasksDiv">
-          <div class="panel panel-default" id = "innerTasksDiv">
-            <div class="panel-body">
-              <div class="pull-right">
-                <div class="btn-group">
-                  <button ng-click="showOpen()" type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing tasks</button>
-                  <button ng-click="showClosed()" type="button" class="btn btn-success btn-filter" data-target="pendiente">Closed tasks</button>
-                  <!-- <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button> -->
+
+            <h1 ng-if="myProfile" class = "centerText blueText">My Tasks</h1>
+            <h1 ng-if="!myProfile" class = "centerText blueText">{{user.local.name}}'s Tasks</h1>
+            <div class="col-md-12 col-md-offset-0" id = "tasksDiv">
+                <div class="panel panel-default" id = "innerTasksDiv">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button ng-click="showOpen()" type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing tasks</button>
+                                <button ng-click="showClosed()" type="button" class="btn btn-success btn-filter" data-target="pendiente">Closed tasks</button>
+                                <!-- <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button> -->
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <tbody>
+                                <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)" class = "ongoingProblem">
+                                    <td>
+                                        <div class="ckbox">
+                                            <input type="checkbox" id="checkbox1">
+                                            <label for="checkbox1"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" class="star">
+                                            <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="media">
+                                            <a href="#" class="pull-left">
+                                            </a>
+                                            <div class="media-body">
+                                                <span class="media-meta pull-right">{{post.date}}</span>
+                                                <h4 class="title">{{post.title}}<span class="pull-right pagado">{{post.subject}}</span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="table-container">
-                <table class="table table-filter">
-                  <tbody>
-                    <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)" class = "ongoingProblem">
-                      <td>
-                        <div class="ckbox">
-                          <input type="checkbox" id="checkbox1">
-                          <label for="checkbox1"></label>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="javascript:;" class="star">
-                          <i class="glyphicon glyphicon-star"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <div class="media">
-                          <a href="#" class="pull-left">
-                          </a>
-                          <div class="media-body">
-                            <span class="media-meta pull-right">{{post.date}}</span>
-                            <h4 class="title">{{post.title}}<span class="pull-right pagado">{{post.subject}}</span>
-                          </h4>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                <div class="content-footer">
+                    <p>
 
-                  </tbody>
-                </table>
-              </div>
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="content-footer">
-            <p>
-
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
     </div>
 
     <div class = "container" id = "reviews">
-      <h1>Feedback</h1>
+        <h1>Feedback</h1>
         <div id = "reviewSection" class = "container">
             <div class = "reviewBox" ng-repeat="review in feedback">
+<<<<<<< HEAD
               <div class="col-md-10 col-md-offset-0 transparentBackground borderNone">
 
                 <img src = "images/man1.jpg">
@@ -118,42 +120,21 @@
                   </select>
                 </div>
           </div>
-
-          <div class ="form-group">
-              <label for="reviewField" class = "col-sm-2 control-label">Review</label>
-              <div class = "col-xs-4">
-
-              <textarea rows="10" cols="50" ng-model="review.body" name="comment" id = "reviewField">
-              </textarea>
-                  <button id="submitReview" ng-click="submitReview()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Submit Review</button>
-
-              </div>
-          </div>
-
-      </form>
-
-    </div>
-  </div>
+  
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script>
-  document.getElementById('start').style.display = "inline";
-  document.getElementById('reviewForm').style.display = "none";
-
-  document.getElementById('start').addEventListener('click', function () {
-      document.getElementById('reviewForm').style.display = "inline";
-      document.getElementById('start').style.display = "none";
-    });
-
-    document.getElementById('submitReview').addEventListener('click', function () {
-        document.getElementById('reviewForm').style.display = "none";
-        document.getElementById('thanks').style.display = "inline";
-      });
-
-
-  </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            document.getElementById('start').addEventListener('click', function () {
+                document.getElementById('reviewForm').style.display = "inline";
+                document.getElementById('start').style.display = "none";
+            });
+            document.getElementById('submitReview').addEventListener('click', function () {
+                document.getElementById('reviewForm').style.display = "none";
+                document.getElementById('thanks').style.display = "inline";
+            });
+        </script>
 </body>
 
 </html>

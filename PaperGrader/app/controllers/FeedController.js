@@ -9,7 +9,7 @@
             $rootScope.userIn = $state.current.userIn;
 
             $http.get('/api/posts').success(function (res) {
-                console.log(res[13].author);
+                //console.log(res[13].author);
                 $scope.posts = res;
             }).error(function(error){
                 console.log(error);
