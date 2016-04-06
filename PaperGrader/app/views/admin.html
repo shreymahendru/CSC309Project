@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!--<link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container" id = "topContainer">
@@ -13,29 +13,9 @@
       <section class="content">
         <h1 class = "centerText">Admin Control Panel</h1>
 
-
-<div class="row spacer"></div>
+          <div class="row spacer"></div>
           <div class="row">
 
-
-
-            <!--this is where the edited div ends -->
-
-            <!--<div class="col-md-3">-->
-              <!--<div class="panel panel-default" id = "innerTasksDiv">-->
-                <!--<div class="panel-body">-->
-                  <!--<div class="pull-right">-->
-                    <!--<h2>Filters</h2>-->
-                    <!--<form class="navbar-form navbar-right" role="search">-->
-                      <!--<p>User ID:</p>-->
-                      <!--<div class="form-group">-->
-                        <!--<input type="text" class="form-control" placeholder="Search">-->
-                      <!--</div>-->
-                    <!--</form>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
             <div class="col-md-8">
               <div class="panel panel-default">
                 <div class="panel-body">
@@ -48,7 +28,7 @@
                   <div class="table-container">
                     <table class="table table-filter">
                       <tbody>
-                        <tr data-status="pagado" class = "solvedProblem">
+                        <tr ng-repeat="user in users" data-status="pagado" class = "solvedProblem">
                           <td>
                             <div class="ckbox">
                               <input type="checkbox" id="checkbox1">
@@ -56,196 +36,27 @@
                             </div>
                           </td>
                           <td>
-                            <a href="javascript:;" class="star">
                               <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> March 5, 2016</span>
-                                <h4 class="title">
-                                  Id: 12134090
-                                  <span class="bg-warning center pagado">Solver</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> barackObama</p>
-                                <p class="summary"><b>password:</b> dvgj3n3f</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr data-status="pagado" class = "solvedProblem">
-                          <td>
-                            <div class="ckbox">
-                              <input type="checkbox" id="checkbox1">
-                              <label for="checkbox1"></label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="javascript:;" class="star">
-                              <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> February 5, 2016</span>
-                                <h4 class="title">
-                                  Id: 34342
-                                  <span class="bg-primary center pagado">User</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> johnHohnson</p>
-                                <p class="summary"><b>password:</b> fles23423</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr data-status="pagado" class = "solvedProblem">
-                          <td>
-                            <div class="ckbox">
-                              <input type="checkbox" id="checkbox1">
-                              <label for="checkbox1"></label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="javascript:;" class="star">
-                              <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> September 15, 2013</span>
-                                <h4 class="title">
-                                  Id: 23231111
-                                  <span class="bg-warning center pagado">Solver</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> alexWang</p>
-                                <p class="summary"><b>password:</b> dfsldmwed</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr data-status="pagado" class = "solvedProblem">
-                          <td>
-                            <div class="ckbox">
-                              <input type="checkbox" id="checkbox1">
-                              <label for="checkbox1"></label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="javascript:;" class="star">
-                              <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> March 5, 2016</span>
-                                <h4 class="title">
-                                  Id: 222308888
-                                  <span class="bg-warning center pagado">Solver</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> mathPro</p>
-                                <p class="summary"><b>password:</b> fdsdsdfr</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr data-status="pagado" class = "solvedProblem">
-                          <td>
-                            <div class="ckbox">
-                              <input type="checkbox" id="checkbox1">
-                              <label for="checkbox1"></label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="javascript:;" class="star">
-                              <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> June 6, 2011</span>
-                                <h4 class="title">
-                                  Id: 1233223
-                                  <span class="bg-primary center pagado">User</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> superUser</p>
-                                <p class="summary"><b>password:</b> vbgbgdd</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr data-status="pagado" class = "solvedProblem">
-                          <td>
-                            <div class="ckbox">
-                              <input type="checkbox" id="checkbox1">
-                              <label for="checkbox1"></label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="javascript:;" class="star">
-                              <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> March 5, 2016</span>
-                                <h4 class="title">
-                                  Id: 000124
-                                  <span class="bg-primary center pagado">User</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> barackObama</p>
-                                <p class="summary"><b>password:</b> dvgj3n3f</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr data-status="pagado" class = "solvedProblem">
-                          <td>
-                            <div class="ckbox">
-                              <input type="checkbox" id="checkbox1">
-                              <label for="checkbox1"></label>
-                            </div>
-                          </td>
-                          <td>
-                            <a href="javascript:;" class="star">
-                              <i class="glyphicon glyphicon-star"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <a href="#" class="pull-left">
-                              </a>
-                              <div class="media-body">
-                                <span class="media-meta pull-right"><b>Created:</b> March 5, 2016</span>
-                                <h4 class="title">
-                                  Id: 88234
-                                  <span class="bg-primary center pagado">User</span>
-                                </h4>
-                                <p class="summary"><b>username:</b> barackObama</p>
-                                <p class="summary"><b>password:</b> dvgj3n3f</p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
 
+                          </td>
 
+                          <td>
+                            <div class="media">
+                              <a href="#" class="pull-left">
+                              </a>
+                              <div class="media-body">
+                                <span class="media-meta pull-right"><b>Created:</b> March 5, 2016</span>
+                                <h4 class="title">
+                                  Username: {{user._id}}
+                                </h4>
+                                <p class="summary"><b>Email:</b> {{user.local.email}}</p>
+                                  <p class="summary"><b>Name:</b> {{user.local.name}}</p>
+                                <p class="summary"><b>Points:</b> {{user.local.points}}</p>
+                                  <p class="summary"><b>Bio:</b> {{user.local.bio || "N/A"}} </p>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -264,8 +75,9 @@
     </div>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type = "text/javascript" src = "bootstrap/js/bootstrap.min.js"> </script>
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script type = "text/javascript" src = "/node_modules/bootstrap/dist/js/bootstrap.min.js"> </script>
+
 </body>
 
 </html>

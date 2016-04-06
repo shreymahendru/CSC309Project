@@ -228,22 +228,21 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
   });
 });
 
+//getting all users for Admin
+app.get('/api/admin/users', function(req, res, next){
+    response = [];
+    User.find(function(err, users){
+        if(err){next(err)}
+        console.log(users);
+        res.json(users);
+    });
+
+});
 
 
 
-//Authentication
-//app.post('/api/user/signup', AuthenticationController.signup);
-//app.post('/api/user/login', AuthenticationController.login);
 
-////Create user
-//app.post('/api/users', function(req, res, next) {
-//  var user = new User(req.body);
-//  console.log(req.body);
-//  user.save(function(err, user){
-//    if(err){ return next(err); }
-//    res.json(user);
-//  });
-//});
+
 
 //Add a post
 app.post('/api/posts', function(req, res, next) {
