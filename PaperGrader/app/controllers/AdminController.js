@@ -24,6 +24,12 @@
             }
             );
 
+            $scope.edit_user = function(user_id){
+
+                window.location = "/#/admin/edit/user/" + user_id;
+
+            }
+
 
         }])
 
