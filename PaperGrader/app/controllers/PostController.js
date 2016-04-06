@@ -16,27 +16,27 @@
               $scope.post = response;
 
               var subject = $scope.post.subject;
-              var query = 'api/posts/subject/' + subject;
-              $http.get(query).success(function(response){
+              var query1 = 'api/posts/subject/' + subject;
+              $http.get(query1).success(function(response){
                   console.log(response);
                   $scope.recomendationPosts = response;
               }).error(function(error){
                   console.log(error);
               })
 
+          }).error(function(error){
+              console.log(error);
+          })
 
-              var query = 'api/comments/posts/' + $stateParams.post_id;
-              $http.get(query).success(function(res){
-                console.log('XXXX');
+          var query2 = 'api/comments/posts/' + $stateParams.post_id;
+          console.log(query2);
 
-                console.log(res);
-
-                  $scope.reviews = res;
-              }).error(function(error){
-                  console.log(error);
-              })
+          $http.get(query2).success(function(res){
+            console.log('XXXX');
+            console.log(res);
 
 
+              $scope.reviews = res;
           }).error(function(error){
               console.log(error);
           })
