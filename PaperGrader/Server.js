@@ -228,7 +228,6 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
 
 //getting all users for Admin
 app.get('/api/admin/users', function(req, res, next){
-    response = [];
     User.find(function(err, users){
         if(err){next(err)}
         console.log(users);
@@ -236,6 +235,31 @@ app.get('/api/admin/users', function(req, res, next){
     });
 
 });
+
+// changing the profile of a user as said by admin
+app.post('/api/admin/edit/user/:id', function(req, res, next){
+    console.log(req.params.id);
+    console.log(req.body);
+    User.findById(req.params.id, function(err, user){
+        if(err){next(err)}
+        console.log(user);
+        user.local.name = req.body.name;
+        user.local.email = req.body.email;
+        user.local.points = req.body.points;
+        user.local.bio = req.body.bio;
+
+        user.save(function (err, user) {
+            if (err) {
+                return next(err);
+            }
+            res.end("Success");
+        });
+
+    });
+
+});
+
+
 
 
 //function isAdmin(req, res, next) {
