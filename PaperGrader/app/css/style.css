@@ -482,6 +482,15 @@ body {
 }
 
 
+#reviewForm {
+  display: none;
+}
+
+#thanks {
+  display: none;
+}
+
+
 /*ADMIN CP*/
 
 

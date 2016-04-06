@@ -45,25 +45,25 @@
                     controller: "ProfileController"
                 })
                 .state('post', {
-                    url: "/post/:permalink",
+                    url: "/post/:post_id",
                     templateUrl : "app/views/task.html",
                     title: "Post",
                     user: true,
-                    controller: "FeedController"
+                    controller: "PostController"
                 })
                 .state('submit', {
                     url: "/submit",
                     templateUrl : "app/views/submission.html",
                     title: "Submit a Post",
                     user: true,
-                    controller: "FeedController"
+                    controller: "SubmitController"
                 })
                 .state('admin', {
                     url: "/admin",
                     templateUrl : "app/views/admin.html",
                     title: "Admin",
                     user: true,
-                    controller: "FeedController"
+                    controller: 'AdminController'
                 })
         })
           .run(function ($rootScope, $state, $stateParams) {

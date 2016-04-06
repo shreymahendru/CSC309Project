@@ -113,6 +113,7 @@ function isLoggedIn(req, res, next) {
 
 
 app.get('/api/users', function(req, res){
+  // console.log(req.user._id);
  User.find(function(err, users){
    if(err){ return err; }
      res.json(users);
@@ -126,12 +127,29 @@ app.get('/api/posts', function(req, res, next){
   });
 });
 
+app.get('/api/posts/:id', function(req, res, next) {
+  Post.findById(req.params.id, function(err, user) {
+    if (err)
+    res.send(err);
+    res.json(user);
+  });
+});
+
+
 app.get('/api/comments', function(req, res, next){
   Comment.find(function(err, comments){
     if(err){ return next(err); }
     res.json(comments);
   });
 });
+
+
+//get current session user
+app.get('/api/users/current', function(req, res, next) {
+    res.json(req.user);
+});
+
+
 
 //get user by name
 app.get('/api/users/:id', function(req, res, next) {
@@ -175,13 +193,13 @@ app.get('/api/comments/users/:user_id', function(req, res, next) {
 });
 
 //Get all posts for the topic
-app.get('/api/posts/topics/:topic', function(req, res, next) {
+app.get('/api/posts/subject/:subject', function(req, res, next) {
   response = [];
   Post.find(function(err, posts){
     if(err){ return next(err); }
     posts.forEach (function (post){
-      if("topic" in post){
-        if(post.topic == req.params.topic){
+      if("subject" in post){
+        if(post.subject == req.params.subject){
           response.push(post);
         }
       }
@@ -206,47 +224,73 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
   });
 });
 
+//getting all users for Admin
+app.get('/api/admin/users', function(req, res, next){
+    response = [];
+    User.find(function(err, users){
+        if(err){next(err)}
+        console.log(users);
+        res.json(users);
+    });
+
+});
+
+
+//function isAdmin(req, res, next) {
+//
+//    // if user is authenticated in the session, carry on
+//    if (req.user.local.admin)
+//        return next();
+//
+//    // if they aren't redirect them to the home page
+//    res.redirect('/');
+//}
 
 
 
-//Authentication
-//app.post('/api/user/signup', AuthenticationController.signup);
-//app.post('/api/user/login', AuthenticationController.login);
+
 
 ////Create user
-//app.post('/api/users', function(req, res, next) {
-//  var user = new User(req.body);
-//  console.log(req.body);
-//  user.save(function(err, user){
-//    if(err){ return next(err); }
-//    res.json(user);
-//  });
-//});
+    app.post('/api/users', function (req, res, next) {
+        var user = new User(req.body);
+        console.log(req.body);
+        user.save(function (err, user) {
+            if (err) {
+                return next(err);
+            }
+            console.log(user);
+            res.json(user);
+        });
+    });
 
 //Add a post
-app.post('/api/posts', function(req, res, next) {
-  var user = new Post(req.body);
-  console.log(req.body);
-  user.save(function(err, user){
-    if(err){ return next(err); }
-    res.json(user);
-  });
-});
+app.post('/api/posts', function (req, res, next) {
+    var post = new Post(req.body);
+    post.author = req.user._id;
+    post.save(function (err, post) {
+        if (err) {
+            return next(err);
+        }
+        res.json(post);
+        });
+    });
 
 //Add a comment
-app.post('/api/comments', function(req, res, next) {
-  var user = new Comment(req.body);
-  console.log(req.body);
-  user.save(function(err, user){
-    if(err){ return next(err); }
-    res.json(user);
-  });
-});
+    app.post('/api/comments', function (req, res, next) {
+        var comment = new Comment(req.body);
+        comment.author = req.user._id;
+        console.log(req.body);
+        comment.save(function (err, comment) {
+            if (err) {
+                return next(err);
+            }
+            res.json(comment);
+        });
+    });
 
 //connect to the mongodb
-mongoose.connect('mongodb://localhost:27017/PaperGrader');
+    mongoose.connect('mongodb://localhost:27017/PaperGrader');
 
-
-app.listen('3000', function(){
-  console.log("Running");
-});
+    app.listen('3000', function () {
+        console.log("Running");
+    });

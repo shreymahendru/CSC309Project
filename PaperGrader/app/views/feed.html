@@ -22,23 +22,19 @@
                         <div class="table-container">
                             <table class="table table-filter">
                                 <tbody>
-
-                                <tr ng-repeat="post in posts" data-status="pagado"><td>
+                                <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)">
+                                  <td>
                                     <div class="ckbox">
                                         <input type="checkbox" id="checkbox1">
                                         <label for="checkbox1"></label>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="javascript:;" class="star">
-                                        <i class="glyphicon glyphicon-star"></i>
-                                    </a>
                                     <h4 class="upvotes">{{post.upvotes}}</h4>
                                 </td>
-                                <td>
-                                    <div class="media">
-                                        <a href="#" class="pull-left">
-                                        </a>
+                                    <td>
+
+                                    <div class="media" >
                                         <div class="media-body">
                                             <span class="media-meta pull-right">{{post.date}}</span>
                                             <h4 class="title">
@@ -49,7 +45,9 @@
                                         </div>
                                     </div>
                                 </td>
+
                                 </tr>
+
 
 
                                 </tbody>
@@ -67,8 +65,7 @@
 
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type = "text/javascript" src = "bootstrap/js/bootstrap.min.js"> </script>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 </body>
 
 

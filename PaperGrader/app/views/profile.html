@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="app/css/style.css">
 </head>
@@ -16,23 +15,11 @@
         <div class="col-md-12 col-md-offset-0 transparentBackground borderNone" id = "profileInfo">
           <img src = "images/suitguy.jpg">
           <div class="panel panel-default transparentBackground borderNone">
-            <h3><span class = "greenColor">Points:</span> 650</h3>
+            <h3><span class = "redColor">{{user.name}}</span></h3>
+            <h3><span class = "greenColor">Points:</span> {{user.points}}</h3>
             <h3><span class = "orangeColor">Ongoing tasks:</span> 4</h3>
             <h3>Biography</h3>
-              <p id = "biography"> I'm a Learning and Communications professional with 10+ years of experience in
-                  adult/non-traditional student teaching/development and 3+ years in Communications in a corporate
-                  setting. I earned my PhD in English Literature in 2010 and am currently completing a Master's
-                  Certificate in Adult Training and Development at the Schulich Executive Education Centre.
-                  <br><br>
-                  In my years as an educator, I've developed instructional and evaluation materials for advanced
-                  placement and remedial courses, and delivered university courses, lectures & seminars, training
-                  sessions and ESL instruction. As a communicator, I specialize in developing internal and strategic
-                  communications to employees in a large organization, relying on my strong verbal and written
-                  communication skills and knowledge of traditional and innovative digital channels.
-                  <br><br>
-                  I'm an individual who is passionate about learning and enabling others to learn more easily,
-                  better and faster, based partly on my liberal educational orientation and partly on my own journey
-                  as a lifelong learner.</p>
+              <p id = "biography">{{user.bio}}</p>
           </div>
         </div>
 
@@ -223,7 +210,6 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type = "text/javascript" src = "bootstrap/js/bootstrap.min.js"> </script>
 </body>
 
 </html>
