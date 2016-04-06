@@ -8,6 +8,7 @@ module.exports =  mongoose.model('Post', {
    averageGrade: Number,
    price: {type: Number, default: 0},
    date: String,
+   solved: Boolean,
    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
    upvotes: {type: Number, default: 0},
 });

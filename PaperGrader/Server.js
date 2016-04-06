@@ -247,11 +247,11 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
 
 //Add a post
 app.post('/api/posts', function(req, res, next) {
-  var user = new Post(req.body);
-  console.log(req.body);
-  user.save(function(err, user){
+  var post = new Post(req.body);
+  post.author = req.user._id;
+  post.save(function(err, post){
     if(err){ return next(err); }
-    res.json(user);
+    res.json(post);
   });
 });
 

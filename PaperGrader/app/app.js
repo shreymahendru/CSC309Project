@@ -56,7 +56,7 @@
                     templateUrl : "app/views/submission.html",
                     title: "Submit a Post",
                     user: true,
-                    controller: "FeedController"
+                    controller: "SubmitController"
                 })
                 .state('admin', {
                     url: "/admin",
