@@ -10,11 +10,20 @@
 <body>
 <div class="container centerText" id = "topContainer">
     <h1>Edit Profile</h1>
+    <span class="glyphicon glyphicon-cog blueText" style ="font-size: 4em;"> </span>
+    <div id = "userInfo">
+        <h5 class = "borderBottom boldFont">Name</h5>
+        <p>{{user.name}}</p>
 
-        <h2>Name =  </h2> <h3>{{user.name}}</h3>
-        <h2>Email =  </h2> <h3>{{user.email}}</h3>
-        <h2>Points =  </h2> <h3>{{user.points}}</h3>
-        <h2>Bio =  </h2><h3>{{user.bio || "N/A"}}</h3>
+        <h5 class = "borderBottom boldFont">Email </h5>
+        <p>{{user.email}}</p>
+
+        <h5 class = "borderBottom boldFont">Points  </h5>
+        <p>{{user.points}}</p>
+
+        <h5 class = "borderBottom boldFont">Biography</h5>
+        <p>{{user.bio || "N/A"}}</p>
+    </div>
         <form method = "post" class = "form-horizontal">
 
             <div class ="form-group">
