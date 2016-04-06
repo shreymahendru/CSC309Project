@@ -540,6 +540,7 @@ body {
     width: 80%;
     padding: 10px;
     text-align: left;
+    height: 100%;
 }
 .borderTop{
     border-top: 1px solid grey;
@@ -561,3 +562,16 @@ body {
 
 }
 
+#similarPostDiv{
+    margin-top: 15px;
+    width: 70%;
+}
+
+#reviews{
+    padding: 5px;
+    text-align: left;
+}
+
+#reviewPanel{
+    padding: 15px;
+}
