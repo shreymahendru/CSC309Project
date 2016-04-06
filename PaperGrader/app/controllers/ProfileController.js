@@ -74,6 +74,8 @@
             $scope.allPosts = response;
             $scope.posts = response;
 
+            $scope.postCount = $scope.allPosts.length;
+
             $http.get('/api/comments/users/' + $scope.user._id).success(function(response) {
               console.log(response);
               $scope.feedback = response;
@@ -118,6 +120,9 @@
             console.log(error);
         })
       }
+      $scope.redirect = function(post_id) {
+        window.location = "/#/post/" + post_id;
+      };
 
       $scope.submitReview = function() {
         console.log($scope.review);
@@ -155,10 +160,20 @@
         $http.post('/api/comments', data).success(function(response){
           console.log(response);
           // $scope.review = response;
-          $state.reload();
         }).error(function(error){
           console.log(error);
         })
+
+        $http.post('/api/users/add_points/'+ $rootScope.user._id + '/5', {}).success(function(response){
+          console.log(response);
+        }).error(function(error){
+          console.log(error);
+        })
+
+
+
+        $state.reload();
+
       }
 
 

@@ -44,6 +44,13 @@
       }).error(function(error){
         console.log(error);
       })
+
+      $http.post('/api/users/add_points/'+ $rootScope.user._id + '/-20', data).success(function(response){
+        console.log(response);
+      }).error(function(error){
+        console.log(error);
+      })
+
     }
   }])
 }());
