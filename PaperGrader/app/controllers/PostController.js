@@ -8,7 +8,7 @@
         .controller('PostController', ['$rootScope','$scope','$http','$stateParams','$state','$filter', function($rootScope, $scope,$http,$stateParams,$state,$filter){
           // console.log($stateParams.id);
           $rootScope.title = $state.current.title;
-          $rootScope.user = $state.current.user;
+          $rootScope.userIn = $state.current.userIn;
 
           var query = 'api/posts/' + $stateParams.post_id;
           $http.get(query).success(function(response){
@@ -113,6 +113,8 @@
             }).error(function(error){
               console.log(error);
             })
+
+            $state.reload();
           }
 
 
