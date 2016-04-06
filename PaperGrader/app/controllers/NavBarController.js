@@ -11,8 +11,8 @@
                 console.log(response);
                 $scope.user = response;
                 $rootScope.user = response;
-                console.log($scope.user.admin);
-                if ($scope.user.admin) {
+                console.log($scope.user.local.admin);
+                if ($scope.user.local.admin) {
                     $scope.admin = true;
                 }
             }).error(function (error) {

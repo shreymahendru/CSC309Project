@@ -1,156 +1,153 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="app/css/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/style.css">
 </head>
 
 <body id = "profileBody">
-  <div class="container" id = "topContainer">
+<div class="container" id = "topContainer">
     <div class="row">
 
-      <section class="content">
+        <section class="content">
 
-        <h1 ng-if="myProfile" >My Profile</h1>
-        <h1 ng-if="!myProfile">{{user.local.name}}'s Profile</h1>
-        <div class="col-md-12 col-md-offset-0 transparentBackground borderNone" id = "profileInfo">
-          <img src = "images/suitguy.jpg">
-          <div class="panel panel-default transparentBackground borderNone">
-            <h3><span class = "redColor">{{user.local.name}}</span></h3>
-            <h3><span class = "greenColor">Points:</span> {{user.local.points}}</h3>
-            <h3><span class = "orangeColor">Submitted tasks:</span> 4</h3>
-            <h3><span class = "orangeColor">Reviewed tasks:</span> 3</h3>
-            <h3 style = "border-bottom: 1px solid darkgray;">Biography</h3>
-              <p id = "biography">{{user.local.bio}}</p>
-          </div>
-        </div>
-
-
-        <h1 ng-if="myProfile" class = "centerText blueText">My Tasks</h1>
-        <h1 ng-if="!myProfile" class = "centerText blueText">{{user.local.name}}'s Tasks</h1>
-        <div class="col-md-12 col-md-offset-0" id = "tasksDiv">
-          <div class="panel panel-default" id = "innerTasksDiv">
-            <div class="panel-body">
-              <div class="pull-right">
-                <div class="btn-group">
-                  <button ng-click="showOpen()" type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing tasks</button>
-                  <button ng-click="showClosed()" type="button" class="btn btn-success btn-filter" data-target="pendiente">Closed tasks</button>
-                  <!-- <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button> -->
+            <h1 ng-if="myProfile" >My Profile</h1>
+            <h1 ng-if="!myProfile">{{user.local.name}}'s Profile</h1>
+            <div class="col-md-12 col-md-offset-0 transparentBackground borderNone" id = "profileInfo">
+                <img src = "images/suitguy.jpg">
+                <div class="panel panel-default transparentBackground borderNone">
+                    <h3><span class = "redColor">{{user.local.name}}</span></h3>
+                    <h3><span class = "greenColor">Points:</span> {{user.local.points}}</h3>
+                    <h3><span class = "orangeColor">Submitted tasks:</span> 4</h3>
+                    <h3><span class = "orangeColor">Reviewed tasks:</span> 3</h3>
+                    <h3 style = "border-bottom: 1px solid darkgray;">Biography</h3>
+                    <p id = "biography">{{user.local.bio}}</p>
                 </div>
-              </div>
-              <div class="table-container">
-                <table class="table table-filter">
-                  <tbody>
-                    <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)" class = "ongoingProblem">
-                      <td>
-                        <div class="ckbox">
-                          <input type="checkbox" id="checkbox1">
-                          <label for="checkbox1"></label>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="javascript:;" class="star">
-                          <i class="glyphicon glyphicon-star"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <div class="media">
-                          <a href="#" class="pull-left">
-                          </a>
-                          <div class="media-body">
-                            <span class="media-meta pull-right">{{post.date}}</span>
-                            <h4 class="title">{{post.title}}<span class="pull-right pagado">{{post.subject}}</span>
-                          </h4>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
             </div>
-          </div>
-          <div class="content-footer">
-            <p>
 
-            </p>
-          </div>
-        </div>
-      </section>
+
+            <h1 ng-if="myProfile" class = "centerText blueText">My Tasks</h1>
+            <h1 ng-if="!myProfile" class = "centerText blueText">{{user.local.name}}'s Tasks</h1>
+            <div class="col-md-12 col-md-offset-0" id = "tasksDiv">
+                <div class="panel panel-default" id = "innerTasksDiv">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button ng-click="showOpen()" type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing tasks</button>
+                                <button ng-click="showClosed()" type="button" class="btn btn-success btn-filter" data-target="pendiente">Closed tasks</button>
+                                <!-- <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button> -->
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <tbody>
+                                <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)" class = "ongoingProblem">
+                                    <td>
+                                        <div class="ckbox">
+                                            <input type="checkbox" id="checkbox1">
+                                            <label for="checkbox1"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" class="star">
+                                            <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="media">
+                                            <a href="#" class="pull-left">
+                                            </a>
+                                            <div class="media-body">
+                                                <span class="media-meta pull-right">{{post.date}}</span>
+                                                <h4 class="title">{{post.title}}<span class="pull-right pagado">{{post.subject}}</span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-footer">
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </section>
 
     </div>
 
     <div class = "container" id = "reviews">
-      <h1>Feedback</h1>
+        <h1>Feedback</h1>
         <div id = "reviewSection" class = "container">
             <div class = "reviewBox" ng-repeat="review in feedback">
-              <div class="col-md-10 col-md-offset-0 transparentBackground borderNone">
+                <div class="col-md-10 col-md-offset-0 transparentBackground borderNone">
 
-                <img src = "images/man1.jpg">
-                <p>{{review.body}}</p>
-                <p>{{review.author.local.name}}</p>
+                    <img src = "images/man1.jpg">
+                    <p>{{review.body}}</p>
+                    <p>{{review.author.local.name}}</p>
 
-                <p><span class = "rating">Rating:</span>{{review.grade}}</p>
-              </div>
-
-              <div class="col-md-2 col-md-offset-0 transparentBackground borderNone">
-                <h2 style = "display:inline-block">{{review.upvotes}}</h2>
-                  <div style = "display:inline-block">
-                      <a ng-click="reviewVote('up', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-up green"></span></a>
-                      <a ng-click="reviewVote('down', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-down red"></span></a>
-                  </div>
-                  <div style="float:right;">
-            </div>
-        </div>
-    </div>
-    <button id="start" type="button" class="btn btn-success btn-filter" style = "margin-bottom: 15px;"data-target="pagado">Review</button>
-    <div class="row centerText" id='reviewForm'>
-      <form method = "post" class = "form-horizontal">
-          <div class = "form-group">
-                <label for = "gradeSelect" class="col-sm-2 control-label">Rating</label>
-                <div class = "col-xs-1">
-                  <select class = "form-control" id="gradeSelect" name="grade" ng-model="review.grade">
-                      <option value = "A">A</option>
-                      <option value = "B">B</option>
-                      <option value = "C">C</option>
-                      <option value = "D">D</option>
-                  </select>
+                    <p><span class = "rating">Rating:</span>{{review.grade}}</p>
                 </div>
-          </div>
 
-          <div class ="form-group">
-              <label for="reviewField" class = "col-sm-2 control-label">Review</label>
-              <div class = "col-xs-4">
+                <div class="col-md-2 col-md-offset-0 transparentBackground borderNone">
+                    <h2 style = "display:inline-block">{{review.upvotes}}</h2>
+                    <div style = "display:inline-block">
+                        <a ng-click="reviewVote('up', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-up green"></span></a>
+                        <a ng-click="reviewVote('down', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-down red"></span></a>
+                    </div>
+                    <div style="float:right;">
+                    </div>
+                </div>
+            </div>
+            <button id="start" type="button" class="btn btn-success btn-filter" style = "margin-bottom: 15px;"data-target="pagado">Review</button>
+            <div class="row centerText" id='reviewForm'>
+                <form method = "post" class = "form-horizontal">
+                    <div class = "form-group">
+                        <label for = "gradeSelect" class="col-sm-2 control-label">Rating</label>
+                        <div class = "col-xs-1">
+                            <select class = "form-control" id="gradeSelect" name="grade" ng-model="review.grade">
+                                <option value = "A">A</option>
+                                <option value = "B">B</option>
+                                <option value = "C">C</option>
+                                <option value = "D">D</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class ="form-group">
+                        <label for="reviewField" class = "col-sm-2 control-label">Review</label>
+                        <div class = "col-xs-4">
 
               <textarea rows="10" cols="50" ng-model="review.body" name="comment" id = "reviewField">
               </textarea>
-                  <button id="submitReview" ng-click="submitReview()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Submit Review</button>
+                            <button id="submitReview" ng-click="submitReview()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Submit Review</button>
 
-              </div>
-          </div>
+                        </div>
+                    </div>
 
-      </form>
+                </form>
 
-    </div>
-  </div>
-
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script>
-  document.getElementById('start').addEventListener('click', function () {
-      document.getElementById('reviewForm').style.display = "inline";
-      document.getElementById('start').style.display = "none";
-    });
-
-    document.getElementById('submitReview').addEventListener('click', function () {
-        document.getElementById('reviewForm').style.display = "none";
-        document.getElementById('thanks').style.display = "inline";
-      });
+            </div>
+        </div>
 
 
-  </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            document.getElementById('start').addEventListener('click', function () {
+                document.getElementById('reviewForm').style.display = "inline";
+                document.getElementById('start').style.display = "none";
+            });
+            document.getElementById('submitReview').addEventListener('click', function () {
+                document.getElementById('reviewForm').style.display = "none";
+                document.getElementById('thanks').style.display = "inline";
+            });
+        </script>
 </body>
 
 </html>
