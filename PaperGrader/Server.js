@@ -215,7 +215,7 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
     if(err){ return next(err); }
     posts.forEach (function (post){
       if("author" in post){
-        if(post.user == req.params.user_id){
+        if(post.author == req.params.user_id){
           response.push(post);
         }
       }

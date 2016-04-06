@@ -15,11 +15,11 @@
         <div class="col-md-12 col-md-offset-0 transparentBackground borderNone" id = "profileInfo">
           <img src = "images/suitguy.jpg">
           <div class="panel panel-default transparentBackground borderNone">
-            <h3><span class = "redColor">{{user.name}}</span></h3>
-            <h3><span class = "greenColor">Points:</span> {{user.points}}</h3>
+            <h3><span class = "redColor">{{user.local.name}}</span></h3>
+            <h3><span class = "greenColor">Points:</span> {{user.local.points}}</h3>
             <h3><span class = "orangeColor">Ongoing tasks:</span> 4</h3>
             <h3>Biography</h3>
-              <p id = "biography">{{user.bio}}</p>
+              <p id = "biography">{{user.local.bio}}</p>
           </div>
         </div>
 
@@ -30,15 +30,15 @@
             <div class="panel-body">
               <div class="pull-right">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing Problems</button>
-                  <button type="button" class="btn btn-success btn-filter" data-target="pendiente">Solved Problems</button>
+                  <button type="button" class="btn btn-warning btn-filter" data-target="pagado">My reviews</button>
+                  <button type="button" class="btn btn-success btn-filter" data-target="pendiente">My posts</button>
                   <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button>
                 </div>
               </div>
               <div class="table-container">
                 <table class="table table-filter">
                   <tbody>
-                    <tr data-status="pagado" class = "ongoingProblem">
+                    <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)" class = "ongoingProblem">
                       <td>
                         <div class="ckbox">
                           <input type="checkbox" id="checkbox1">
@@ -55,121 +55,14 @@
                           <a href="#" class="pull-left">
                           </a>
                           <div class="media-body">
-                            <span class="media-meta pull-right">Mar 23, 2016</span>
-                            <h4 class="title">
-                            Aristotle and Locke on Property
-                            <span class="pull-right pagado">Political Science</span>
+                            <span class="media-meta pull-right">{{post.date}}</span>
+                            <h4 class="title">{{post.title}}<span class="pull-right pagado">{{post.subject}}</span>
                           </h4>
                           </div>
                         </div>
                       </td>
                     </tr>
-                    <tr data-status="pendiente" class = "ongoingProblem">
-                      <td>
-                        <div class="ckbox">
-                          <input type="checkbox" id="checkbox3">
-                          <label for="checkbox3"></label>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="javascript:;" class="star">
-                          <i class="glyphicon glyphicon-star"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <div class="media">
-                          <a href="#" class="pull-left">
-                          </a>
-                          <div class="media-body">
-                            <span class="media-meta pull-right">Mar 13, 2016</span>
-                            <h4 class="title">
-														The role of nature through American art
-														<span class="pull-right pendiente">Art</span>
-													</h4>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr data-status="cancelado" class = "solvedProblem">
-                      <td>
-                        <div class="ckbox">
-                          <input type="checkbox" id="checkbox2">
-                          <label for="checkbox2"></label>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="javascript:;" class="star">
-                          <i class="glyphicon glyphicon-star"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <div class="media">
-                          <a href="#" class="pull-left">
-                          </a>
-                          <div class="media-body">
-                            <span class="media-meta pull-right">Febrero 13, 2016</span>
-                            <h4 class="title">
-														Lorem Impsum
-														<span class="pull-right cancelado">Group Theory</span>
-													</h4>
-                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr data-status="pagado" class="selected ongoingProblem">
-                      <td>
-                        <div class="ckbox">
-                          <input type="checkbox" id="checkbox4" checked>
-                          <label for="checkbox4"></label>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="javascript:;" class="star star-checked">
-                          <i class="glyphicon glyphicon-star"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <div class="media">
-                          <a href="#" class="pull-left">
-                          </a>
-                          <div class="media-body">
-                            <span class="media-meta pull-right">Febrero 13, 2016</span>
-                            <h4 class="title">
-														Lorem Impsum
-														<span class="pull-right pagado">Linear Algebra</span>
-													</h4>
-                            <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr data-status="pendiente" class = "ongoingProblem">
-                      <td>
-                        <div class="ckbox">
-                          <input type="checkbox" id="checkbox5">
-                          <label for="checkbox5"></label>
-                        </div>
-                      </td>
-                      <td>
-                        <a href="javascript:;" class="star">
-                          <i class="glyphicon glyphicon-star"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <div class="media">
-                          <a href="#" class="pull-left">
-                          </a>
-                          <div class="media-body">
-                            <span class="media-meta pull-right">Febrero 13, 2016</span>
-                            <h4 class="title">
-														Lorem Impsum
-														<span class="pull-right pendiente">Calculus I</span>
-													</h4>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -188,20 +81,14 @@
     <div class = "container" id = "reviews">
       <h1>Reviews</h1>
         <div id = "reviewSection" class = "container">
-            <div class = "reviewBox">
+            <div class = "reviewBox" ng-repeat="review in feedback">
                 <img src = "images/man1.jpg">
-                <a href = "#"><h5>CarlJohnson5</h5></a>
-                <p> Thank you for the great feedback! Although the grading took longer than I expected,
-                    I received great reviews for my speech!</p>
-                <p><span class = "rating">Rating:</span> 4/5</p>
+                <a href = "#"><h5>{{review.author.local.name}}</h5></a>
+                <p>{{review.body}}</p>
+                <p><span class = "rating">Rating:</span>{{review.grade}}</p>
             </div>
 
-            <div class = "reviewBox">
-                <img src = "images/girl1.jpg">
-                <a href = "#"><h5>Jenni1997</h5></a>
-                <p> Thank you so much i got an A on my paper!</p>
-                <p><span class = "rating">Rating:</span> 5/5</p>
-            </div>
+
         </div>
 
     </div>

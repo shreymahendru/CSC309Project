@@ -40,6 +40,7 @@
       $http.post('/api/posts', data).success(function(response){
         console.log(response);
         $scope.post = response;
+        window.location = '/#/home';
       }).error(function(error){
         console.log(error);
       })
