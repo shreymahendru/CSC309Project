@@ -475,3 +475,12 @@ body {
 .rating{
     color: #9068BE;
 }
+
+
+#reviewForm {
+  display: none;
+}
+
+#thanks {
+  display: none;
+}

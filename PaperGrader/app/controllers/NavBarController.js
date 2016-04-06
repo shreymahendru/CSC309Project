@@ -10,9 +10,12 @@
          $http.get(query).success(function(response){
              console.log(response);
              $scope.user = response.local;
+            //  console.log($scope.user.admin);
+            //  if($scope.user.admin) {
+            //    $rootScope.admin = true;
+            //  }
          }).error(function(error){
              console.log(error);
          })
-
         }]);
 }());

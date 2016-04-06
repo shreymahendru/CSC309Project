@@ -113,7 +113,7 @@ function isLoggedIn(req, res, next) {
 
 
 app.get('/api/users', function(req, res){
-  console.log(req.user._id);
+  // console.log(req.user._id);
  User.find(function(err, users){
    if(err){ return err; }
      res.json(users);
@@ -197,13 +197,13 @@ app.get('/api/comments/users/:user_id', function(req, res, next) {
 });
 
 //Get all posts for the topic
-app.get('/api/posts/topics/:topic', function(req, res, next) {
+app.get('/api/posts/subject/:subject', function(req, res, next) {
   response = [];
   Post.find(function(err, posts){
     if(err){ return next(err); }
     posts.forEach (function (post){
-      if("topic" in post){
-        if(post.topic == req.params.topic){
+      if("subject" in post){
+        if(post.subject == req.params.subject){
           response.push(post);
         }
       }
@@ -252,15 +252,35 @@ app.post('/api/posts', function(req, res, next) {
     if(err){ return next(err); }
     res.json(user);
   });
+////Create user
+app.post('/api/users', function(req, res, next) {
+ var user = new User(req.body);
+ console.log(req.body);
+ user.save(function(err, user){
+   if(err){ return next(err); }
+   console.log(user);
+   res.json(user);
+ });
+});
+
+//Add a post
+app.post('/api/posts', function(req, res, next) {
+  var post = new Post(req.body);
+  post.author = req.user._id;
+  post.save(function(err, post){
+    if(err){ return next(err); }
+    res.json(post);
+  });
 });
 
 //Add a comment
 app.post('/api/comments', function(req, res, next) {
-  var user = new Comment(req.body);
+  var comment = new Comment(req.body);
+  comment.author = req.user._id;
   console.log(req.body);
-  user.save(function(err, user){
+  comment.save(function(err, comment){
     if(err){ return next(err); }
-    res.json(user);
+    res.json(comment);
   });
 });
 

@@ -26,7 +26,8 @@
         <li ng-if="user"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
         <li ng-if="user"><a ui-sref="profile">My Profile <span class="sr-only">(current)</span></a></li>
         <li ng-if="user"><a ui-sref="task">Notifications</a></li>
-        <li ng-if="user"><a ui-sref="admin">Admin Control Panel</a></li>
+        <li ng-if="user"><a ui-sref="submit">Create a post</a></li>
+        <li ng-if="admin"><a ui-sref="admin">Admin Control Panel</a></li>
 
       </ul>
       <form class="navbar-form navbar-right" role="search" id = "searchBarDiv">
@@ -71,6 +72,14 @@
   <script src="/app/controllers/NavBarController.js"></script>
   <script src="/node_modules/bootstrap/js/modal.js"></script>
   <script src="/app/controllers/AdminController.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers/FeedController.js"></script>
+  <script src="app/controllers/HomeController.js"></script>
+  <script src="app/controllers/ProfileController.js"></script>
+  <script src="app/controllers/PostController.js"></script>
+  <script src="app/controllers/NavBarController.js"></script>
+  <script src="app/controllers/SubmitController.js"></script>
+  <script src="node_modules/bootstrap/js/modal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
 </body>
 </html>
