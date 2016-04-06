@@ -545,7 +545,9 @@ body {
 .borderTop{
     border-top: 1px solid grey;
 }
-
+.borderBottom{
+    border-bottom: 1px solid grey;
+}
 #innerDiv{
     height: 200px;
     background-color:#C5D5CB;
@@ -574,4 +576,36 @@ body {
 
 #reviewPanel{
     padding: 15px;
+}
+
+#reviewTextBox{
+    width: 80%;
+}
+
+
+/*EDIT USER INFO*/
+
+#userInfo{
+    text-align: left;
+    margin-bottom: 70px;
+    border-bottom: 2px solid grey;
+}
+
+.boldFont{
+    font-weight:bold;
+}
+
+#biographyField{
+    margin-top: 15px;
+}
+
+/*SUBMISSION*/
+
+#submissionHeader{
+    margin-bottom: 25px;
+}
+
+#mytextarea{
+    width: 80%;
+    height: 150px;
 }

@@ -85,7 +85,7 @@
       <div class="row">
         <div class="col-md-12 col-md-offset-0 centerText">
 
-          <button id="start" type="button" class="btn btn-success btn-filter" data-target="pagado">Review</button>
+          <button id="start" type="button" class="btn btn-success btn-filter" style = "margin-bottom: 15px;"data-target="pagado">Review</button>
           <div class="row centerText" id='reviewForm'>
             <form method = "post" class = "form-horizontal">
                 <div class = "form-group">
@@ -99,15 +99,19 @@
                         </select>
                       </div>
                 </div>
-                <div class = "form-group">
 
-                    <label for = "mytextarea" class="col-sm-2 control-label">Your review</label>
-                    <div class = "col-xs-1">
-                        <textarea rows="10" cols="50" ng-model="review.body" id="mytextarea"></textarea>
+                <div class ="form-group">
+                    <label for="reviewField" class = "col-sm-2 control-label">Review</label>
+                    <div class = "col-xs-4">
+
+                    <textarea rows="10" cols="50" ng-model="review.body" name="comment" id = "reviewField">
+                    </textarea>
+                        <button id="submitReview" ng-click="submitReview()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Submit Review</button>
+
                     </div>
                 </div>
+
             </form>
-              <button id="submitReview" ng-click="submitReview()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Submit Review</button>
 
           </div>
           <h3 id="thanks" class="greenColor">Thank you for the review!</h3>
