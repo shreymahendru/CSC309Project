@@ -5,7 +5,7 @@
 (function(){
 
     angular.module("PaperGrader")
-        .controller('ProfileController', ['$rootScope','$scope','$http','$stateParams','$state','$q', function($rootScope, $scope,$http,$stateParams,$state,$q){
+        .controller('ProfileController', ['$rootScope','$scope','$http','$stateParams','$state','$q','$filter', function($rootScope, $scope,$http,$stateParams,$state,$q,$filter){
           // console.log($stateParams.id);
           $rootScope.title = $state.current.title;
           $rootScope.user = $state.current.user;
@@ -53,6 +53,20 @@
         //       console.log(error);
         //   })
         // }
+
+        $scope.reviewVote = function(action, id) {
+          var value = 0;
+          if(action == 'up'){value = 1}
+          else if(action == 'down'){value = -1}
+          var review = $filter('filter')($scope.feedback, {_id: id})[0];
+          review.upvotes += value;
+          var voteQuery = '/api/comments/' + id + '/' + action;
+          $http.post(voteQuery, '').success(function(response){
+            console.log(response);
+          }).error(function(error){
+            console.log(error);
+          })
+        }
 
         $scope.getReviewedTasks = function(){
         $http.get('/api/posts').success(function (res) {

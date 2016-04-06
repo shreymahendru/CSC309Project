@@ -82,10 +82,22 @@
       <h1>Reviews</h1>
         <div id = "reviewSection" class = "container">
             <div class = "reviewBox" ng-repeat="review in feedback">
+              <div class="col-md-10 col-md-offset-0 transparentBackground borderNone">
+
                 <img src = "images/man1.jpg">
                 <a href = "#"><h5>{{review.author.local.name}}</h5></a>
                 <p>{{review.body}}</p>
                 <p><span class = "rating">Rating:</span>{{review.grade}}</p>
+              </div>
+
+              <div class="col-md-2 col-md-offset-0 transparentBackground borderNone">
+                <h2 style = "display:inline-block">{{review.upvotes}}</h2>
+                  <div style = "display:inline-block">
+                      <a ng-click="reviewVote('up', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-up green"></span></a>
+                      <a ng-click="reviewVote('down', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-down red"></span></a>
+                  </div>
+                  <div style="float:right;">
+
             </div>
 
 

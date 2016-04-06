@@ -36,8 +36,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({ secret: 'PaperGraderSecret',    // Creating sessions for each user
-  saveUninitialized: true,
-  resave: true}));
+saveUninitialized: true,
+resave: true}));
 
 app.use(passport.initialize());  // start authentication
 
@@ -66,8 +66,8 @@ app.post('/signup', passport.authenticate('local-signup', {
   failureRedirect : '/', // redirect back to the signup page if there is an error
   failureFlash : true // allow flash messages
 }));
-        // THE SUCCESS REDIRECT WOULD B TO THE APP EVERY WHERE!!!!
-        // REDIRECT TO PROFILE RIGHT NOW IS JUST TEMP!!!!!!
+// THE SUCCESS REDIRECT WOULD B TO THE APP EVERY WHERE!!!!
+// REDIRECT TO PROFILE RIGHT NOW IS JUST TEMP!!!!!!
 
 app.post('/login', passport.authenticate('local-login', {
   successRedirect : '/', // redirect to the secure profile section
@@ -83,16 +83,16 @@ app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' })
 
 // handle the callback after facebook has authenticated the user
 app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', {
-      successRedirect : '/',
-      failureRedirect : '/'
-    }));
+passport.authenticate('facebook', {
+  successRedirect : '/',
+  failureRedirect : '/'
+}));
 
 
 
 app.get('/logout', function(req, res) {
   req.logout();
-    console.log('loging out');
+  console.log('loging out');
   res.redirect('/');
 });
 
@@ -100,7 +100,7 @@ function isLoggedIn(req, res, next) {
 
   // if user is authenticated in the session, carry on
   if (req.isAuthenticated())
-    return next();
+  return next();
 
   // if they aren't redirect them to the home page
   res.redirect('/login');
@@ -108,17 +108,17 @@ function isLoggedIn(req, res, next) {
 
 
 
- //DONT NEED THIS AS YOU CAN SEE IN THE ABOVE EXAMPLE EVERY REQ IS OF A SESSION AND EACH SESSION IS FOR A USER
+//DONT NEED THIS AS YOU CAN SEE IN THE ABOVE EXAMPLE EVERY REQ IS OF A SESSION AND EACH SESSION IS FOR A USER
 // req.user has the user obj everytime which is autheticated
 
 
 
 app.get('/api/users', function(req, res){
   // console.log(req.user._id);
- User.find(function(err, users){
-   if(err){ return err; }
-     res.json(users);
- });
+  User.find(function(err, users){
+    if(err){ return err; }
+    res.json(users);
+  });
 });
 
 app.get('/api/posts', function(req, res, next){
@@ -147,7 +147,7 @@ app.get('/api/comments', function(req, res, next){
 
 //get current session user
 app.get('/api/users/current', function(req, res, next) {
-    res.json(req.user);
+  res.json(req.user);
 });
 
 app.get('');
@@ -228,35 +228,33 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
 
 //getting all users for Admin
 app.get('/api/admin/users', function(req, res, next){
-    User.find(function(err, users){
-        if(err){next(err)}
-        console.log(users);
-        res.json(users);
-    });
+  User.find(function(err, users){
+    if(err){next(err)}
+    console.log(users);
+    res.json(users);
+  });
 
 });
 
 // changing the profile of a user as said by admin
 app.post('/api/admin/edit/user/:id', function(req, res, next){
-    console.log(req.params.id);
-    console.log(req.body);
-    User.findById(req.params.id, function(err, user){
-        if(err){next(err)}
-        console.log(user);
-        user.local.name = req.body.name;
-        user.local.email = req.body.email;
-        user.local.points = req.body.points;
-        user.local.bio = req.body.bio;
+  console.log(req.params.id);
+  console.log(req.body);
+  User.findById(req.params.id, function(err, user){
+    if(err){next(err)}
+    console.log(user);
+    user.local.name = req.body.name;
+    user.local.email = req.body.email;
+    user.local.points = req.body.points;
+    user.local.bio = req.body.bio;
 
-        user.save(function (err, user) {
-            if (err) {
-                return next(err);
-            }
-            res.end("Success");
-        });
-
+    user.save(function (err, user) {
+      if (err) {
+        return next(err);
+      }
+      res.end("Success");
     });
-
+  });
 });
 
 
@@ -277,46 +275,88 @@ app.post('/api/admin/edit/user/:id', function(req, res, next){
 
 
 ////Create user
-    app.post('/api/users', function (req, res, next) {
-        var user = new User(req.body);
-        console.log(req.body);
-        user.save(function (err, user) {
-            if (err) {
-                return next(err);
-            }
-            console.log(user);
-            res.json(user);
-        });
-    });
+app.post('/api/users', function (req, res, next) {
+  var user = new User(req.body);
+  console.log(req.body);
+  user.save(function (err, user) {
+    if (err) {
+      return next(err);
+    }
+    console.log(user);
+    res.json(user);
+  });
+});
 
 //Add a post
 app.post('/api/posts', function (req, res, next) {
-    var post = new Post(req.body);
-    post.author = req.user._id;
+  var post = new Post(req.body);
+  post.author = req.user._id;
+  post.save(function (err, post) {
+    if (err) {
+      return next(err);
+    }
+  });
+});
+
+//upvote a post
+//action = "up" or "down"
+app.post('/api/posts/:post_id/:action', function (req, res, next) {
+  Post.findById(req.params.post_id, function(err, post){
+    if(err){next(err)}
+    console.log(post);
+
+    if(req.params.action == 'up'){post.upvotes += 1;}
+    else if(req.params.action == 'down'){post.upvotes -= 1;}
+
     post.save(function (err, post) {
-        if (err) {
-            return next(err);
-        }
-        res.json(post);
-        });
+      if (err) {
+        return next(err);
+      }
+      res.json(post);
     });
+  });
+});
+
+
+//upvote a review
+//action = "up" or "down"
+app.post('/api/comments/:comment_id/:action', function (req, res, next) {
+  Comment.findById(req.params.comment_id, function(err, comment){
+    if(err){next(err)}
+    console.log(comment);
+
+    if(req.params.action == 'up'){comment.upvotes += 1;}
+    else if(req.params.action == 'down'){comment.upvotes -= 1;}
+
+    comment.save(function (err, post) {
+      if (err) {
+        return next(err);
+      }
+      res.json(post);
+    });
+  });
+});
+
+
+
+
 
 //Add a comment
-    app.post('/api/comments', function (req, res, next) {
-        var comment = new Comment(req.body);
-        comment.author = req.user._id;
-        console.log(req.body);
-        comment.save(function (err, comment) {
-            if (err) {
-                return next(err);
-            }
-            res.json(comment);
-        });
-    });
+app.post('/api/comments', function (req, res, next) {
+  var comment = new Comment(req.body);
+  comment.author = req.user._id;
+  console.log(req.body);
+  comment.save(function (err, comment) {
+    if (err) {
+      return next(err);
+    }
+    res.json(comment);
+  });
+});
 
 //connect to the mongodb
-    mongoose.connect('mongodb://localhost:27017/PaperGrader');
+mongoose.connect('mongodb://localhost:27017/PaperGrader');
 
-    app.listen('3000', function () {
-        console.log("Running");
-    });
+app.listen('3000', function () {
+  console.log("Running");
+});
