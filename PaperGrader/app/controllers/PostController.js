@@ -9,17 +9,28 @@
           // console.log($stateParams.id);
           $rootScope.title = $state.current.title;
           $rootScope.userIn = $state.current.userIn;
+          $scope.toggleVal = false;
 
           var query = 'api/posts/' + $stateParams.post_id;
           $http.get(query).success(function(response){
               console.log(response);
               $scope.post = response;
-              var authorQuery = 'api/users/'+response.author;
-              $http.get(authorQuery).success(function(response){
-                  $scope.post.author = response;
-              }).error(function(error){
-                  console.log(error);
-              })
+
+
+              if(response.author == $rootScope.user._id){
+                          $scope.myPost = true;
+                          $scope.post.author = $rootScope.user;
+
+                        }else{
+                          $scope.myPost = false;
+
+                          var authorQuery = 'api/users/'+response.author;
+                          $http.get(authorQuery).success(function(response){
+                              $scope.post.author = response;
+                          }).error(function(error){
+                              console.log(error);
+                          })
+                        }
 
 
               var query1 = 'api/posts/subject/' + $scope.post.subject;
@@ -43,6 +54,12 @@
 
           $scope.redirect = function(post_id) {
             window.location = "/#/post/" + post_id;
+          }
+
+          $scope.toggle = function(){
+            if($scope.toggleVal==true){$scope.toggleVal=false}
+            else{$scope.toggleVal=true}
+            console.log($scope.toggleVal);
           }
 
           $scope.postVote = function(action) {
@@ -71,6 +88,16 @@
               console.log(error);
             })
           }
+
+          $scope.closeTask = function(){
+            $http.post('/api/posts/' +$stateParams.post_id+'/close', '').success(function(response){
+              console.log(response);
+            }).error(function(error){
+              console.log(error);
+            })
+            console.log("success");
+
+            }
 
           $scope.submitReview = function() {
             console.log($scope.review);

@@ -319,6 +319,11 @@ app.post('/api/posts/:post_id/:action', function (req, res, next) {
 
     if(req.params.action == 'up'){post.upvotes += 1;}
     else if(req.params.action == 'down'){post.upvotes -= 1;}
+    else if(req.params.action == 'close'){
+      post.solved = true;
+
+    }
+
 
     post.save(function (err, post) {
       if (err) {
@@ -328,6 +333,8 @@ app.post('/api/posts/:post_id/:action', function (req, res, next) {
     });
   });
 });
+
+
 
 
 //upvote a review

@@ -33,9 +33,9 @@
             <div class="panel-body">
               <div class="pull-right">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-warning btn-filter" data-target="pagado">My reviews</button>
-                  <button type="button" class="btn btn-success btn-filter" data-target="pendiente">My posts</button>
-                  <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button>
+                  <button ng-click="showOpen()" type="button" class="btn btn-warning btn-filter" data-target="pagado">Ongoing tasks</button>
+                  <button ng-click="showClosed()" type="button" class="btn btn-success btn-filter" data-target="pendiente">Closed tasks</button>
+                  <!-- <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Tags</button> -->
                 </div>
               </div>
               <div class="table-container">
@@ -101,12 +101,8 @@
                       <a ng-click="reviewVote('down', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-down red"></span></a>
                   </div>
                   <div style="float:right;">
-
             </div>
-
-
         </div>
-
     </div>
     <button id="start" type="button" class="btn btn-success btn-filter" style = "margin-bottom: 15px;"data-target="pagado">Review</button>
     <div class="row centerText" id='reviewForm'>

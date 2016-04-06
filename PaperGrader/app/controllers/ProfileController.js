@@ -52,6 +52,17 @@
         //       console.log(error);
         //   })
         // }
+      //
+      //   $scope.getReviewedTasks = function(){
+      //   var query = '/api/posts/users/' + $scope.user._id;
+      //   console.log(query);
+      //   $http.get(query).success(function (res) {
+      //       console.log(res);
+      //       $scope.posts = res;
+      //   }).error(function(error){
+      //       console.log(error);
+      //   })
+      // }
 
 
         $scope.update = function(){
@@ -60,6 +71,7 @@
 
           $http.get('/api/posts/users/' + $scope.user._id).success(function(response) {
             console.log(response);
+            $scope.allPosts = response;
             $scope.posts = response;
 
             $http.get('/api/comments/users/' + $scope.user._id).success(function(response) {
@@ -73,7 +85,15 @@
         }
 
 
+        $scope.showOpen = function(){
+          var open = $filter('filter')($scope.allPosts, {solved: false});
+          $scope.posts = open;
+        }
 
+        $scope.showClosed = function(){
+          var closed = $filter('filter')($scope.allPosts, {solved: true});
+          $scope.posts = closed;
+        }
 
 
         $scope.reviewVote = function(action, id) {

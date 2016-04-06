@@ -4,12 +4,13 @@
 (function(){
 
     angular.module("PaperGrader")
-        .controller('NavBarController', ['$scope', '$state', '$http', function($scope, $state, $http) {
+        .controller('NavBarController', ['$rootScope','$scope', '$state', '$http', function($rootScope,$scope, $state, $http) {
 
             var query = 'api/users/current';
             $http.get(query).success(function (response) {
                 console.log(response);
                 $scope.user = response;
+                $rootScope.user = response;
                 console.log($scope.user.admin);
                 if ($scope.user.admin) {
                     $scope.admin = true;

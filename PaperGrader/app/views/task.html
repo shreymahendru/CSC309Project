@@ -59,13 +59,16 @@
       <div class="row">
         <div class="col-md-12 col-md-offset-0 centerText">
 
-          <button id="start" type="button" class="btn btn-success btn-filter" style = "margin-bottom: 15px;"data-target="pagado">Review</button>
-          <div class="row centerText" id='reviewForm'>
+          <button id='start' ng-if="!myPost" ng-click="toggle()" type="button" class="btn btn-success btn-filter" style = "margin-bottom: 15px;"data-target="pagado">Review</button>
+          <button  id='start' ng-if="myPost"  ng-click="closeTask()" type="button" class="btn btn-filter" style = "margin-bottom: 15px; background-color:orange;"data-target="pagado">Close Task</button>
+
+
+          <div class="row centerText" id='reviewForm' ng-if="toggleVal">
             <form method = "post" class = "form-horizontal">
                 <div class = "form-group">
                       <label for = "gradeSelect" class="col-sm-2 control-label">Your grade</label>
                       <div class = "col-xs-1">
-                        <select class = "form-control" id="gradeSelect" name="grade" ng-model="review.grade">
+                        <select class = "form-control" id="gradeSelect" name="grade" ng-model="$parent.review.grade">
                             <option value = "A">A</option>
                             <option value = "B">B</option>
                             <option value = "C">C</option>
@@ -75,7 +78,6 @@
                 </div>
 
                 <div class ="form-group">
-                    <label for="reviewField" class = "col-sm-2 control-label">Review</label>
                     <div class = "col-xs-4">
 
                     <textarea rows="10" cols="50" ng-model="review.body" name="comment" id = "reviewField">
@@ -119,6 +121,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
+
 document.getElementById('start').addEventListener('click', function () {
     document.getElementById('reviewForm').style.display = "inline";
     document.getElementById('start').style.display = "none";
@@ -128,8 +131,6 @@ document.getElementById('start').addEventListener('click', function () {
       document.getElementById('reviewForm').style.display = "none";
       document.getElementById('thanks').style.display = "inline";
     });
-
-
 </script>
 </body>
 
