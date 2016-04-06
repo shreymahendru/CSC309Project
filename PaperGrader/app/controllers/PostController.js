@@ -15,8 +15,15 @@
               console.log(response);
               $scope.post = response;
 
-              var subject = $scope.post.subject;
-              var query1 = 'api/posts/subject/' + subject;
+              var authorQuery = 'api/users/'+response.author;
+              $http.get(authorQuery).success(function(response){
+                  $scope.post.author = response;
+              }).error(function(error){
+                  console.log(error);
+              })
+
+
+              var query1 = 'api/posts/subject/' + $scope.post.subject;
               $http.get(query1).success(function(response){
                   console.log(response);
                   $scope.recomendationPosts = response;
@@ -44,7 +51,6 @@
           $scope.redirect = function(post_id) {
             window.location = "/#/post/" + post_id;
           }
-
 
           $scope.submitReview = function() {
             console.log($scope.review);

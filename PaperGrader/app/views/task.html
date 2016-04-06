@@ -13,6 +13,7 @@
       <section class="content">
         <h1>Paper on {{post.subject}}</h1>
         <h2>{{post.title}}</h2>
+        <h2>Author: <a href="/#/profile/{{post.author._id}}">{{post.author.local.name}}</a></h2>
         <div class="col-md-8 col-md-offset-0">
           <div class="panel panel-default">
             <div class="panel-body">
@@ -33,7 +34,9 @@
           <div class="panel panel-default">
             <h3 class="orangeColor">Similar posts</h3>
             <div class="link" ng-repeat="recomendation in recomendationPosts" data-status="pagado">
-              <p ng-click="redirect(post._id)">{{recomendation.title}}</p>
+              <!-- ng-click="redirect(post._id)" -->
+              <a href="/#/post/{{recomendation._id}}"><p>{{recomendation.title}}</p></a>
+
             </div>
 
           </div>
