@@ -170,6 +170,12 @@ app.get('/api/comments/posts/:post_id', function(req, res, next) {
     comments.forEach (function (comment){
       if("post" in comment){
         if(comment.post == req.params.post_id){
+
+          User.findById(comment.author, function(err, user){
+            if(err){next(err)}
+            comment.author = user;
+          });
+
           response.push(comment);
         }
       }
@@ -186,10 +192,16 @@ app.get('/api/comments/users/:user_id', function(req, res, next) {
     comments.forEach (function (comment){
       if("user" in comment){
         if(comment.user == req.params.user_id){
-          response.push(comment);
+            User.findById(comment.author, function(err, user){
+              if(err){next(err)}
+              comment.author = user;
+            });
+
+              response.push(comment);
         }
       }
     });
+    console.log('responding');
     res.json(response);
   });
 });
@@ -345,12 +357,13 @@ app.post('/api/comments/:comment_id/:action', function (req, res, next) {
 app.post('/api/comments', function (req, res, next) {
   var comment = new Comment(req.body);
   comment.author = req.user._id;
+
+
   console.log(req.body);
   comment.save(function (err, comment) {
     if (err) {
       return next(err);
     }
-    res.json(comment);
   });
 });
 

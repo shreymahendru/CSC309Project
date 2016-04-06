@@ -23,10 +23,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" id="navBarList">
-        <li ng-if="user"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
-        <li ng-if="user"><a ui-sref="profile">My Profile <span class="sr-only">(current)</span></a></li>
-        <li ng-if="user"><a ui-sref="task">Notifications</a></li>
-        <li ng-if="user"><a ui-sref="submit">Create a post</a></li>
+        <li ng-if="userIn"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+        <li ng-if="userIn"><a ui-sref="profile({_id: user._id})">My Profile <span class="sr-only">(current)</span></a></li>
+        <li ng-if="userIn"><a ui-sref="task">Notifications</a></li>
+        <li ng-if="userIn"><a ui-sref="submit">Create a post</a></li>
         <li ng-if="admin"><a ui-sref="admin">Admin Control Panel</a></li>
 
       </ul>
@@ -39,8 +39,8 @@
         <!--<li><a href="#"><b>My Points:</b> 650</a></li>-->
         <!--<li data-toggle="modal" data-target="#loginForm"> <a href = "#"><span class ="glyphicon glyphicon-user"></span> Sign Up </a></li>-->
         <!--<li data-toggle="modal" data-target="#loginForm"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-        <li ng-if="user"><a href="#">Points: {{user.points}}</a></li>
-        <li ng-if="user" ng-click="logout()"><a> <span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
+        <li ng-if="userIn"><a href="#">Points: {{user.local.points}}</a></li>
+        <li ng-if="userIn" ng-click="logout()"><a> <span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
 
       </ul>
     </div>
@@ -53,7 +53,7 @@
   <div class="wrapper" id = "topContainer">
     <div ui-view></div>
     <div class="container contentContainer" id ="blurbContainer">
-      <div ng-if="!user" class="row">
+      <div ng-if="!userIn" class="row">
         <div class="col-md-6 col-md-offset-3" id = "toprow">
           <h1 class= "marginTop">Online Grader</h1>
           <p class="lead"> Your own personal teacher to grade your papers. </p>

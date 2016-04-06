@@ -9,7 +9,7 @@
             var query = 'api/users/current';
             $http.get(query).success(function (response) {
                 console.log(response);
-                $scope.user = response.local;
+                $scope.user = response;
                 console.log($scope.user.admin);
                 if ($scope.user.admin) {
                     $scope.admin = true;

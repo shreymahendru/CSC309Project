@@ -19,14 +19,14 @@
                     url: "/signup",
                     templateUrl: "app/views/signup.html",
                     title: "Sign Up",
-                    user: false,
+                    userIn: false,
                     controller: "SignupController"
                 })
                 .state('login', {
                     url: "/login",
                     templateUrl : "app/views/login.html",
                     title: "Log In",
-                    user: false,
+                    userIn: false,
                     controller: "LoginController"
 
                 })
@@ -34,42 +34,42 @@
                     url: "/home",
                     templateUrl : "app/views/feed.html",
                     title: "Feed",
-                    user: true,
+                    userIn: true,
                     controller: "FeedController"
                 })
                 .state('profile', {
-                    url: "/profile/:id",
+                    url: "/profile/:_id",
                     templateUrl : "app/views/profile.html",
                     title: "My Profile",
-                    user: true,
+                    userIn: true,
                     controller: "ProfileController"
                 })
                 .state('post', {
                     url: "/post/:post_id",
                     templateUrl : "app/views/task.html",
                     title: "Post",
-                    user: true,
+                    userIn: true,
                     controller: "PostController"
                 })
                 .state('submit', {
                     url: "/submit",
                     templateUrl : "app/views/submission.html",
                     title: "Submit a Post",
-                    user: true,
+                    userIn: true,
                     controller: "SubmitController"
                 })
                 .state('admin', {
                     url: "/admin",
                     templateUrl : "app/views/admin.html",
                     title: "Admin",
-                    user: true,
+                    userIn: true,
                     controller: 'AdminController'
                 })
                 .state('AdminEditor', {
                     url: "/admin/edit/user/:user_id",
                     templateUrl : "app/views/editProfile.html",
                     title: "Edit User",
-                    user: true,
+                    userIn: true,
                     controller: "EditorController"
                 })
         })

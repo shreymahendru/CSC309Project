@@ -105,6 +105,7 @@
                           <a ng-click="reviewVote('up', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-up green"></span></a>
                           <a ng-click="reviewVote('down', review._id)" style = "display:block" href = ""><span style = "font-size: 2em;" class = "glyphicon glyphicon-thumbs-down red"></span></a>
                       </div>
+                      <p style = "display:inline-block;">by {{review.author.local.name}}</p>
                       <p style = "display:inline-block;" id = "reviews">{{review.body}}</p>
             </div>
           </div>

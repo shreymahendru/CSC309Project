@@ -8,7 +8,7 @@
   .controller('SubmitController', ['$rootScope','$scope','$http','$stateParams','$state', function($rootScope, $scope,$http,$stateParams,$state){
     // console.log($stateParams.id);
     $rootScope.title = $state.current.title;
-    $rootScope.user = $state.current.user;
+    $rootScope.userIn = $state.current.userIn;
     var query = 'api/posts/' + $stateParams.post_id;
 
     var today = new Date();
@@ -40,7 +40,7 @@
       $http.post('/api/posts', data).success(function(response){
         console.log(response);
         $scope.post = response;
-        window.location = '/#/home';
+        $state.go('home');
       }).error(function(error){
         console.log(error);
       })

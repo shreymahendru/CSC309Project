@@ -22,8 +22,8 @@
                         <div class="table-container">
                             <table class="table table-filter">
                                 <tbody>
-                                <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)">
-                                  <td>
+                                  <tr ng-repeat="post in posts" data-status="pagado" ng-click="redirect(post._id)">
+                                    <!-- <tr ng-repeat="post in posts" data-status="pagado" ng-click="getAuthor(post.author)">                                  <td> -->
                                     <div class="ckbox">
                                         <input type="checkbox" id="checkbox1">
                                         <label for="checkbox1"></label>
@@ -40,6 +40,7 @@
                                             <span class="media-meta pull-right">{{post.date}}</span>
                                             <h4 class="title">
                                                 {{post.title}}
+                                                <!-- <span>{{getAuthor(post.author)}}</span> -->
                                                 <span class="pull-right pagado">{{post.subject}}</span>
                                             </h4>
                                             <p class="summary">{{post.description}}</p>
