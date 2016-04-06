@@ -146,11 +146,7 @@ app.get('/api/comments', function(req, res, next){
 
 //get current session user
 app.get('/api/users/current', function(req, res, next) {
-  User.findById(req.user._id, function(err, user) {
-    if (err)
-    res.send(err);
-    res.json(user);
-  });
+    res.json(req.user);
 });
 
 
@@ -240,6 +236,15 @@ app.get('/api/admin/users', function(req, res, next){
 });
 
 
+//function isAdmin(req, res, next) {
+//
+//    // if user is authenticated in the session, carry on
+//    if (req.user.local.admin)
+//        return next();
+//
+//    // if they aren't redirect them to the home page
+//    res.redirect('/');
+//}
 
 
 

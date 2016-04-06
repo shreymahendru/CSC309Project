@@ -76,6 +76,16 @@ module.exports = function(passport) {
                         newUser.local.name = req.body.name;
                         newUser.local.points = 0;
 
+                        if(username === "admin@admin.com"){
+                            console.log("Admin created");
+                            newUser.local.admin = true;
+                            console.log(newUser.local.admin);
+                        }
+                        else{
+                            newUser.local.admin = false;
+                            console.log("Not an admin");
+                        }
+
                         // save the user
                         newUser.save(function(err) {
                             if (err)
