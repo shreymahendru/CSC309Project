@@ -242,7 +242,7 @@ app.get('/api/posts/users/:user_id', function(req, res, next) {
 app.get('/api/admin/users', function(req, res, next){
   User.find(function(err, users){
     if(err){next(err)}
-    console.log(users);
+    //console.log(users);
     res.json(users);
   });
 
@@ -259,6 +259,10 @@ app.post('/api/admin/edit/user/:id', function(req, res, next){
     user.local.email = req.body.email;
     user.local.points = req.body.points;
     user.local.bio = req.body.bio;
+      if(req.body.changePassword){
+          console.log('password is changing');
+          user.local.password =  user.generateHash(req.body.password);
+      }
 
     user.save(function (err, user) {
       if (err) {

@@ -32,10 +32,11 @@
                     if(angular.isDefined($scope.new.bio) && ((temp_user.bio === $scope.new.bio) === false)){
                         temp_user.bio = $scope.new.bio;
                     }
+                    temp_user.changePassword = false;
                     if(angular.isDefined($scope.new.password)){
                         temp_user.password = $scope.new.password;
+                        temp_user.changePassword = true;
                     }
-                    console.log('NIGGGGGGER');
                     console.log(typeof ($scope.new.points));
                     if(angular.isDefined($scope.new.points) && ((temp_user.points === $scope.new.points) === false) ){
                         temp_user.points = $scope.new.points;
