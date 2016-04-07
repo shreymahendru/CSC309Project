@@ -29,7 +29,7 @@
               }
           }).error(function(error){
               console.log(error);
-          })
+          });
 
 
         //   $scope.getFeedback = function(){
@@ -84,7 +84,7 @@
               console.log(error);
           });
 
-        }
+        };
 
 
         $scope.showOpen = function(){
@@ -110,7 +110,7 @@
           }).error(function(error){
             console.log(error);
           })
-        }
+        };
 
         $scope.getReviewedTasks = function(){
         $http.get('/api/posts').success(function (res) {
@@ -119,7 +119,7 @@
         }).error(function(error){
             console.log(error);
         })
-      }
+      };
       $scope.redirect = function(post_id) {
         window.location = "/#/post/" + post_id;
       };
@@ -152,8 +152,8 @@
             grade: grade,
             date: today,
             user: $scope.user._id,
-            date: today,
-          }
+            date: today
+          };
 
         console.log(data);
 
@@ -162,17 +162,23 @@
           // $scope.review = response;
         }).error(function(error){
           console.log(error);
-        })
+        });
 
         $http.post('/api/users/add_points/'+ $rootScope.user._id + '/5', {}).success(function(response){
           console.log(response);
         }).error(function(error){
           console.log(error);
-        })
+        });
+
+
 
         $state.reload();
 
-      }
+      };
+
+            $scope.editProfile = function(user_id){
+                window.location = "/#/edit/profile/user/"+ user_id;
+            };
 
 
           }])

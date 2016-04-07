@@ -9,6 +9,10 @@
 <div class="container" id = "topContainer">
     <div class="row">
 
+        <div ng-if="myProfile"  class = "form-group centerText">
+            <button  id="edit" ng-click="editProfile(user._id)" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Edit My Profile</button>
+        </div>
+
         <section class="content">
 
             <h1 ng-if="myProfile" >My Profile</h1>

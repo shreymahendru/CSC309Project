@@ -72,6 +72,14 @@
                     userIn: true,
                     controller: "EditorController"
                 })
+
+                .state('ProfileEditor', {
+                    url: "/edit/profile/user/:user_id",
+                    templateUrl : "app/views/editMyProfile.html",
+                    title: "Edit My Profile",
+                    userIn: true,
+                    controller: "MyProfileEditorController"
+                })
         })
           .run(function ($rootScope, $state, $stateParams) {
                $rootScope.title = "Online Grader";

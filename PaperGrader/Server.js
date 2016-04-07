@@ -273,6 +273,43 @@ app.post('/api/admin/edit/user/:id', function(req, res, next){
   });
 });
 
+
+//User editing their profile!
+
+app.post('/api/edit/profile/:id', function(req, res, next){
+    console.log(req.params.id);
+    console.log(req.body);
+    User.findById(req.params.id, function(err, user){
+        if(err){next(err)}
+        console.log(user);
+        user.local.name = req.body.name;
+        user.local.email = req.body.email;
+        user.local.points = req.body.points;
+        user.local.bio = req.body.bio;
+        if(req.body.changePassword){
+            console.log('password is changing');
+            user.local.password =  user.generateHash(req.body.password);
+        }
+
+        user.save(function (err, user) {
+            if (err) {
+                return next(err);
+            }
+            res.end("Success");
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
 //add points to user
 app.post('/api/users/add_points/:id/:amount', function(req, res, next){
   User.findById(req.params.id, function(err, user){
