@@ -273,6 +273,21 @@ app.post('/api/admin/edit/user/:id', function(req, res, next){
   });
 });
 
+//add points to user
+app.post('/api/users/add_points/:id/:amount', function(req, res, next){
+  User.findById(req.params.id, function(err, user){
+    if(err){next(err)}
+    user.local.points += parseInt(req.params.amount);
+
+    user.save(function (err, user) {
+      if (err) {
+        return next(err);
+      }
+      res.end("Success");
+    });
+  });
+});
+
 
 
 

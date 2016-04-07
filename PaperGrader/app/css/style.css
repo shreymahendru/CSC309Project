@@ -482,12 +482,12 @@ body {
 }
 
 
-#reviewForm {
-  /*display: none;*/
+.reviewForm {
+  display: none;
 }
 
 #thanks {
-  display: none;
+  display: nones;
 }
 
 

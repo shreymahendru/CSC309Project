@@ -136,12 +136,22 @@
             $http.post('/api/comments', data).success(function(response){
               console.log(response);
               // $scope.review = response;
-              $state.reload();
+
+
+            }).error(function(error){
+              console.log(error);
+            })
+
+            $http.post('/api/users/add_points/'+ $rootScope.user._id + '/5', data).success(function(response){
+              console.log(response);
+              $state.go('home');
+
             }).error(function(error){
               console.log(error);
             })
 
             $state.reload();
+
           }
 
 
