@@ -11,9 +11,10 @@ var userSchema = mongoose.Schema({
         email        : String,
         password     : String,
         name         : String,
-        points       : {type: Number, default: 0},
+        points       : {type: Number, default: 100},
         admin        : Boolean,
-        bio          : String
+        bio          : String,
+        profilePicture : {type: String, default: "/images/facebook-avatar.jpg"}
     },
     facebook         : {
         id           : String,

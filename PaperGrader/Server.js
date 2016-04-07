@@ -431,7 +431,7 @@ app.post('/api/comments', function (req, res, next) {
 });
 
 //connect to the mongodb
-mongoose.connect('mongodb://localhost:27017/PaperGrader');
+mongoose.connect('mongodb://localhost:27017/PaperGrade');
 
 app.listen('3000', function () {
   console.log("Running");

@@ -51,6 +51,8 @@
         console.log(error);
       })
 
+      window.location = "/#/home"
+
     }
   }])
 }());
