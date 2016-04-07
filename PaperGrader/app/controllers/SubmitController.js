@@ -51,6 +51,9 @@
         console.log(error);
       })
 
+      $state.go('home');
+
+
     }
   }])
 }());
