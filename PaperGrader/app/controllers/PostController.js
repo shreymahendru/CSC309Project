@@ -47,7 +47,7 @@
           var query2 = 'api/comments/posts/' + $stateParams.post_id;
 
           $http.get(query2).success(function(res){
-              $scope.reviews = res;
+              $scope.reviews = res.reverse();
           }).error(function(error){
               console.log(error);
           })
@@ -100,8 +100,6 @@
             }
 
           $scope.submitReview = function() {
-            console.log($scope.review);
-
             var grade = 0;
             if($scope.review.grade == 'A'){grade=100}
             else if($scope.review.grade == 'B'){grade=80}
@@ -144,7 +142,6 @@
 
             $http.post('/api/users/add_points/'+ $rootScope.user._id + '/5', data).success(function(response){
               console.log(response);
-              $state.go('home');
 
             }).error(function(error){
               console.log(error);

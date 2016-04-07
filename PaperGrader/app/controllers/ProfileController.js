@@ -71,14 +71,14 @@
 
           $http.get('/api/posts/users/' + $scope.user._id).success(function(response) {
             console.log(response);
-            $scope.allPosts = response;
-            $scope.posts = response;
+            $scope.allPosts = response.reverse();
+            $scope.posts = response.reverse();
 
             $scope.postCount = $scope.allPosts.length;
 
             $http.get('/api/comments/users/' + $scope.user._id).success(function(response) {
               console.log(response);
-              $scope.feedback = response;
+              $scope.feedback = response.reverse();
             });
           }).error(function(error){
               console.log(error);
@@ -89,12 +89,12 @@
 
         $scope.showOpen = function(){
           var open = $filter('filter')($scope.allPosts, {solved: false});
-          $scope.posts = open;
+          $scope.posts = open.reverse();
         }
 
         $scope.showClosed = function(){
           var closed = $filter('filter')($scope.allPosts, {solved: true});
-          $scope.posts = closed;
+          $scope.posts = closed.reverse();
         }
 
 
@@ -115,7 +115,7 @@
         $scope.getReviewedTasks = function(){
         $http.get('/api/posts').success(function (res) {
             console.log(res);
-            $scope.posts = res;
+            $scope.posts = res.reverse();
         }).error(function(error){
             console.log(error);
         })
@@ -169,8 +169,6 @@
         }).error(function(error){
           console.log(error);
         })
-
-
 
         $state.reload();
 
