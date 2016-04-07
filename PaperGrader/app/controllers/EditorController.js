@@ -5,6 +5,8 @@
     angular.module("PaperGrader")
         .controller('EditorController', ['$rootScope','$scope','$http','$stateParams','$state', function($rootScope, $scope,$http,$stateParams,$state){
                 console.log($stateParams.user_id);
+                $rootScope.title = $state.current.title;
+                $rootScope.userIn = $state.current.userIn;
             var query  = '/api/users/' + $stateParams.user_id;
 
             $http.get(query).success(function(response){
