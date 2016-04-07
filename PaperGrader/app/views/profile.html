@@ -9,6 +9,10 @@
 <div class="container" id = "topContainer">
     <div class="row">
 
+        <div ng-if="myProfile" class = "form-group centerText">
+            <button id="edit" ng-click="submitPost()" type="button" class="btn btn-success btn-filter centerText" data-target="pagado">Edit Profile</button>
+        </div>
+
         <section class="content">
 
             <h1 ng-if="myProfile" >My Profile</h1>
@@ -136,8 +140,7 @@
         </div>
 
 
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
         <script>
             document.getElementById('start').addEventListener('click', function () {
                 document.getElementById('reviewForm').style.display = "inline";
